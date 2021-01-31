@@ -1,0 +1,44 @@
+.container
+    .row.mb-5
+        .col-lg-4.mb-5
+            a([routerLink]='').card.lift.h-100
+                img.card-img-top(src='https://source.unsplash.com/2d4lAQAlbDA/800x500', alt='...')
+                .card-body
+                    h4.card-title.mb-2 Outdoor Patio
+                    p.card-text
+                        | Our property features a beautiful, private outdoor area with seating and a pool.
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-primary
+                        | See more
+                    .small.text-primary.lh-1
+                        i-feather(name='arrow-right')
+        .col-lg-4.mb-5
+            a([routerLink]='').card.lift.h-100
+                img.card-img-top(src='https://source.unsplash.com/MP0bgaS_d1c/800x500', alt='...')
+                .card-body
+                    h4.card-title.mb-2 Full Kitchen
+                    p.card-text
+                        | A fully stocked kitchen with all modern amenities provides a peaceful cooking environment.
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-primary
+                        | See more
+                    .small.text-primary.lh-1
+                        i-feather(name='arrow-right')
+        .col-lg-4.mb-5
+            a([routerLink]='').card.lift.h-100
+                img.card-img-top(src='https://source.unsplash.com/iAftdIcgpFc/800x500', alt='...')
+                .card-body
+                    h4.card-title.mb-2 Comfortable Bedding
+                    p.card-text
+                        | With three newly updated bedrooms you will be sleeping soundly during your stay.
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-primary
+                        | See more
+                    .small.text-primary.lh-1
+                        i-feather(name='arrow-right')
+    .text-center.mb-4
+        h2 Your questions, answered.
+
+    sbpro-card-accordion-faq(
+        [faqs]='faqs'
+    )

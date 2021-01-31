@@ -1,0 +1,59 @@
+li.nav-item.dropdown.dropdown-xl.no-caret(
+    ngbDropdown
+)
+    a#navbarDropdownPages.nav-link.dropdown-toggle.pointer(
+        ngbDropdownToggle,
+        data-cy='pagesDropdown',
+        role='button',
+        data-toggle='dropdown',
+        aria-haspopup='true',
+        aria-expanded='false'
+    )
+        | Pages
+        fa-icon.dropdown-arrow([icon]='["fas", "chevron-right"]')
+    .dropdown-menu.dropdown-menu-right.mr-lg-n20.mr-xl-n15.animated--fade-in-up(
+        ngbDropdownMenu,
+        aria-labelledby='navbarDropdownPages'
+    )
+        .row.no-gutters
+            .col-lg-4.p-lg-5
+                h6.dropdown-header.text-primary Company
+                a.dropdown-item(routerLink='/pages/basic-page') Basic Page
+                a.dropdown-item(routerLink='/pages/about') About
+                a.dropdown-item(routerLink='/pages/pricing') Pricing
+                a.dropdown-item(routerLink='/pages/contact') Contact
+                a.dropdown-item(routerLink='/pages/team') Team
+                a.dropdown-item(routerLink='/pages/terms') Terms
+                .dropdown-divider.border-0
+                h6.dropdown-header.text-primary Support
+                a.dropdown-item(routerLink='/pages/help-center') Help Center
+                a.dropdown-item(routerLink='/pages/knowledgebase') Knowledgebase
+                a.dropdown-item(routerLink='/pages/message-center') Message Center
+                a.dropdown-item(routerLink='/pages/support-ticket') Support Ticket
+                .dropdown-divider.border-0.d-lg-none
+            .col-lg-4.p-lg-5
+                h6.dropdown-header.text-primary Careers
+                a.dropdown-item(routerLink='/pages/careers-list') Careers List
+                a.dropdown-item(routerLink='/pages/position-details') Position Details
+                .dropdown-divider.border-0
+                h6.dropdown-header.text-primary Blog
+                a.dropdown-item(routerLink='/pages/overview') Overview
+                a.dropdown-item(routerLink='/pages/post') Post
+                a.dropdown-item(routerLink='/pages/archive') Archive
+                .dropdown-divider.border-0
+                h6.dropdown-header.text-primary Portfolio
+                a.dropdown-item(routerLink='/pages/grid') Grid
+                a.dropdown-item(routerLink='/pages/large-grid') Large Grid
+                a.dropdown-item(routerLink='/pages/masonry') Masonry
+                a.dropdown-item(routerLink='/pages/case-study') Case Study
+                a.dropdown-item(routerLink='/pages/project') Project
+            .col-lg-4.p-lg-5
+                h6.dropdown-header.text-primary Error
+                a.dropdown-item(routerLink='/pages/error-400') 400 Error
+                a.dropdown-item(routerLink='/pages/error-401') 401 Error
+                a.dropdown-item(routerLink='/pages/error-403') 403 Error
+                a.dropdown-item(routerLink='/pages/error-404-1') 404 Error (Option 1)
+                a.dropdown-item(routerLink='/pages/error-404-2') 404 Error (Option 2)
+                a.dropdown-item(routerLink='/pages/error-500') 500 Error
+                a.dropdown-item(routerLink='/pages/error-503') 503 Error
+                a.dropdown-item(routerLink='/pages/error-504') 504 Error

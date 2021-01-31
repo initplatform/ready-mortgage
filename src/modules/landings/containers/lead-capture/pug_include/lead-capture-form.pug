@@ -1,0 +1,58 @@
+form([formGroup]='signupForm', (ngSubmit)='onSubmit()')
+    .form-row
+
+        .form-group.col-md-6
+            label.small.text-gray-600(for='leadCapFirstName') First Name
+            input#leadCapFirstName.form-control(
+                data-cy='firstNameInput',
+                type='text',
+                formControlName='firstName',
+                [class.is-valid]='firstNameControlValid',
+                [class.is-invalid]='firstNameControlInvalid'
+            )
+        .invalid-feedback(*ngIf='firstNameControl.hasError("required")')
+            | First Name required.
+
+        .form-group.col-md-6
+            label.small.text-gray-600(for='leadCapLastName') Last Name
+            input#leadCapLastName.form-control(
+                data-cy='lastNameInput',
+                type='text',
+                formControlName='lastName',
+                [class.is-valid]='lastNameControlValid',
+                [class.is-invalid]='lastNameControlInvalid'
+            )
+        .invalid-feedback(*ngIf='lastNameControl.hasError("required")')
+            | Last Name required.
+
+    .form-group
+        label.small.text-gray-600(for='leadCapEmail') Email address
+        input#leadCapEmail.form-control(
+            data-cy='emailInput',
+            type='email',
+            formControlName='email',
+            [class.is-valid]='emailControlValid',
+            [class.is-invalid]='emailControlInvalid'
+        )
+        .invalid-feedback(*ngIf='emailControl.hasError("required")')
+            | Email required.
+        .invalid-feedback(*ngIf='emailControl.hasError("email")')
+            | Email is not valid.
+
+    .form-group
+        label.small.text-gray-600(for='leadCapCompany') Company or Organization
+        input#leadCapCompany.form-control(
+            data-cy='companyInput',
+            type='text',
+            formControlName='company',
+            [class.is-valid]='companyControlValid',
+            [class.is-invalid]='companyControlInvalid'
+        )
+        .invalid-feedback(*ngIf='companyControl.hasError("required")')
+            | Company or Organization required.
+
+    button.btn.btn-primary.btn-block.font-weight-500.mt-4(
+        data-cy='submitButton',
+        type='submit',
+        [disabled]='signupForm.invalid'
+    ) Download Now

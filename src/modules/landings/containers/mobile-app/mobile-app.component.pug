@@ -1,0 +1,37 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-gradient-primary-to-secondary page-header-dark',
+        borderType='waves',
+        borderClasses='text-white'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+    )
+        include pug_include/features.pug
+
+    hr
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+    )
+        include pug_include/testimonials.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+    )
+        include pug_include/feature-cards.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='waves',
+        borderClasses='text-dark'
+    )
+        include pug_include/get-app.pug

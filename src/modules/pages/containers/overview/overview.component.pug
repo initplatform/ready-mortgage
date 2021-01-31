@@ -1,0 +1,24 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-primary',
+        buttonClasses='btn-primary'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-cover overlay overlay-60 page-header-dark',
+        borderType='rounded',
+        borderClasses='text-light',
+        backgroundImage='url(https://source.unsplash.com/PTRzqc_h1r4/1600x900)'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+        borderType='rounded',
+        borderClasses='text-dark'
+    )
+        include pug_include/blog-overview.pug

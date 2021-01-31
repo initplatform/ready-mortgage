@@ -1,0 +1,25 @@
+ng-template(#confirmationModal, let-modal)
+    .modal-header
+        h5.modal-title Sing Up Form Data
+        button.close(
+            type='button',
+            aria-label='Close',
+            (click)='modal.dismiss("Cross click")'
+        )
+            span(aria-hidden='true') ×
+    .modal-body.
+        Wired up and ready to go. Just add a backend.
+        <br><br>
+        firstName: <code>{{signupForm.value.firstName}}</code>
+        <br>
+        lastName: <code>{{signupForm.value.lastName}}</code>
+        <br>
+        email: <code>{{signupForm.value.email}}</code>
+        <br>
+        company: <code>{{signupForm.value.company}}</code>
+        <br>
+    .modal-footer
+        button.btn.btn-primary(
+            type='button',
+            (click)='modal.close()'
+        ) Close

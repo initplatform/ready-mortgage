@@ -1,0 +1,51 @@
+.container
+
+    .d-flex.align-items-center.justify-content-between.mb-4
+        h2.mb-0 Newest Listings
+        a.btn.btn-sm.btn-primary.d-inline-flex.align-items-center([routerLink]='')
+            | See more
+            i-feather.ml-1(name='arrow-right')
+
+    .row
+        .col-lg-4.mb-5.mb-lg-0
+            a([routerLink]='').card.lift.h-100
+                .card-flag.card-flag-dark.card-flag-top-right
+                    | Listed 3 days
+                img.card-img-top(src='https://source.unsplash.com/561igiTyvSk/800x500', alt='...')
+                .card-body
+                    h3.text-primary.mb-0 $556,999
+                    .small.text-gray-800.font-weight-500 5 bd | 3 ba | 2,420 sqft
+                    .small.text-gray-500 Sartalik, GA
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-gray-500
+                        | View listing
+                    .small.text-gray-500.lh-1
+                        i-feather(name='arrow-right')
+        .col-lg-4.mb-5.mb-lg-0
+            a([routerLink]='').card.lift.h-100
+                .card-flag.card-flag-dark.card-flag-top-right
+                    | Listed 5 days
+                img.card-img-top(src='https://source.unsplash.com/IYfp2Ixe9nM/800x500', alt='...')
+                .card-body
+                    h3.text-primary.mb-0 $384,000
+                    .small.text-gray-800.font-weight-500 4 bd | 2 ba | 1,750 sqft
+                    .small.text-gray-500 Picsard, GA
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-gray-500
+                        | View listing
+                    .small.text-gray-500.lh-1
+                        i-feather(name='arrow-right')
+        .col-lg-4
+            a([routerLink]='').card.lift.h-100
+                .card-flag.card-flag-dark.card-flag-top-right
+                    | Listed 1 week
+                img.card-img-top(src='https://source.unsplash.com/XbwHrt87mQ0/800x500', alt='...')
+                .card-body
+                    h3.text-primary.mb-0 $349,999
+                    .small.text-gray-800.font-weight-500 3 bd | 2 ba | 1,231 sqft
+                    .small.text-gray-500 Sartalik, GA
+                .card-footer.bg-transparent.border-top.d-flex.align-items-center.justify-content-between
+                    .small.text-gray-500
+                        | View listing
+                    .small.text-gray-500.lh-1
+                        i-feather(name='arrow-right')

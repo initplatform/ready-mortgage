@@ -1,0 +1,17 @@
+.svg-border-rounded(
+    *ngIf='borderType === "rounded"',
+    [ngClass]='borderClasses'
+)
+    include pug_include/border-bottom-rounded.pug
+
+.svg-border-waves(
+    *ngIf='borderType === "waves"',
+    [ngClass]='borderClasses'
+)
+    include pug_include/border-bottom-waves.pug
+
+.svg-border-angled(
+    *ngIf='borderType === "angled"',
+    [ngClass]='borderClasses'
+)
+    include pug_include/border-bottom-angled.pug

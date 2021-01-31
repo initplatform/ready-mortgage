@@ -1,0 +1,22 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-primary',
+        buttonClasses='btn-primary'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-cover py-15 page-header-dark',
+        borderType='rounded',
+        borderClasses='text-light',
+        backgroundImage='url("https://source.unsplash.com/RKwaj2g6OOU/1500x900")'
+    )
+        .my-15.py-lg-10
+
+    sbpro-page-section(
+        sectionClasses='bg-light py-10',
+    )
+        include pug_include/case-study.pug

@@ -1,0 +1,42 @@
+.container
+    .row.mb-10
+        .col-lg-6.mb-5.mb-lg-0.divider-right
+            .testimonial.p-lg-5
+                .avatar.avatar-xl.mb-3
+                    img.avatar-img(src='https://source.unsplash.com/QAB-WJcbgJk/96x96')
+                p.testimonial-quote.text-primary
+                    | "Working with the realtor's has been a true joy. They helped us purchase our home and made the whole process so easy!"
+                .testimonial-name
+                    | Valerie Luna
+                .testimonial-position
+                    | Jefferson, GA
+        .col-lg-6
+            .testimonial.p-lg-5
+                .avatar.avatar-xl.mb-3
+                    img.avatar-img(src='https://source.unsplash.com/MTZTGvDsHFY/96x96')
+                p.testimonial-quote.text-primary
+                    | "Selling a home has never been so easy. The real estate group helped me prepare my home, list it, and sell it, all within a few weeks!"
+                .testimonial-name
+                    | Destrian Barnes
+                .testimonial-position
+                    | Fayetville, NC
+
+    .row
+        .col-lg-6.mb-5.mb-lg-0
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                            i-feather(name='home')
+                        .ml-4
+                            h5.text-primary Buy a home
+                            p.card-text.text-gray-600 Looking for your dream home? Get in touch with us now to start your search!
+        .col-lg-6
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                            i-feather(name='dollar-sign')
+                        .ml-4
+                            h5.text-secondary Sell your home
+                            p.card-text.text-gray-600 Our award winning real estate group is ready to take on the challenge!

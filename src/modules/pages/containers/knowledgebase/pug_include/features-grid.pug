@@ -1,0 +1,55 @@
+.container
+
+    .d-flex.align-items-center.mb-5
+        .icon-stack.icon-stack-lg.bg-primary.text-white
+            i-feather(name='users')
+        .ml-3
+            h2.mb-0 Account
+            p.lead.mb-0 Let's see if we can help.
+
+    //- Help Accordion 1
+
+    sbpro-card-accordion-faq(
+        [faqs]='faqs',
+        [header]='true'
+    )
+        .header-title Authentication issues
+        .header-subtitle Issues related to logging in, registering a new account, and setting your account password
+
+    sbpro-card-accordion-faq(
+        [faqs]='faqs',
+        [header]='true'
+    )
+        .header-title Billing
+        .header-subtitle Issues related to billing
+
+    hr.my-5
+
+    .row.text-center
+        .col-lg-4.mb-5.mb-lg-0
+            a.card.card-link.border-top.border-top-lg.border-primary.h-100.lift([routerLink]='')
+                .card-body.p-5
+                    .icon-stack.icon-stack-lg.bg-primary-soft.text-primary.mb-4
+                        i-feather(name='user')
+                    h6 Account
+                    p.card-text Issues related to logging in, out, or about multiple devices.
+                .card-footer.bg-transparent.pt-0.pb-5
+                    .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 21 Entries
+        .col-lg-4.mb-5.mb-lg-0
+            a.card.card-link.border-top.border-top-lg.border-green.h-100.lift([routerLink]='')
+                .card-body.p-5
+                    .icon-stack.icon-stack-lg.bg-green-soft.text-green.mb-4
+                        i-feather(name='clock')
+                    h6 Integrations
+                    p.card-text Connecting with 3rd party apps to exchange data.
+                .card-footer.bg-transparent.pt-0.pb-5
+                    .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 9 Entries
+        .col-lg-4
+            a.card.card-link.border-top.border-top-lg.border-yellow.h-100.lift([routerLink]='')
+                .card-body.p-5
+                    .icon-stack.icon-stack-lg.bg-yellow-soft.text-yellow.mb-4
+                        i-feather(name='clock')
+                    h6 Billing
+                    p.card-text Issues with payments or invoicing.
+                .card-footer.bg-transparent.pt-0.pb-5
+                    .badge.badge-pill.badge-light.font-weight-normal.px-3.py-2 14 Entries

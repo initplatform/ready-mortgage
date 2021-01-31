@@ -1,0 +1,87 @@
+<sbpro-layout-landing footerClasses="bg-white footer-light"
+    ><sb-top-nav topNavClasses="bg-white navbar-light" brandClasses="text-dark" buttonClasses="btn-primary"></sb-top-nav
+    ><sbpro-page-header headerClasses="bg-img-cover overlay overlay-light overlay-80 page-header-light" borderType="rounded" borderClasses="text-white" backgroundImage='url("https://source.unsplash.com/R-LK3sqLiBw/1600x1200")'
+        ><div class="page-header-content py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-10 text-center">
+                        <h1 class="page-header-title">Rent your home or extra room</h1>
+                        <p class="page-header-text mb-5">Opening your home to vacationers is a great way to earn some extra income, and this is a great way to get started!</p>
+                        <a class="btn btn-primary font-weight-500" [routerLink]="">Get Started</a><a class="btn btn-link font-weight-500" [routerLink]="">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div></sbpro-page-header
+    ><sbpro-page-section sectionClasses="py-10 bg-white"
+        ><div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-4 mb-5">
+                    <a class="card lift h-100" [routerLink]=""
+                        ><img class="card-img-top" src="https://source.unsplash.com/2d4lAQAlbDA/800x500" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title mb-2">Outdoor Patio</h4>
+                            <p class="card-text">Our property features a beautiful, private outdoor area with seating and a pool.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                            <div class="small text-primary">See more</div>
+                            <div class="small text-primary lh-1"><i-feather name="arrow-right"></i-feather></div></div
+                    ></a>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <a class="card lift h-100" [routerLink]=""
+                        ><img class="card-img-top" src="https://source.unsplash.com/MP0bgaS_d1c/800x500" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title mb-2">Full Kitchen</h4>
+                            <p class="card-text">A fully stocked kitchen with all modern amenities provides a peaceful cooking environment.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                            <div class="small text-primary">See more</div>
+                            <div class="small text-primary lh-1"><i-feather name="arrow-right"></i-feather></div></div
+                    ></a>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <a class="card lift h-100" [routerLink]=""
+                        ><img class="card-img-top" src="https://source.unsplash.com/iAftdIcgpFc/800x500" alt="..." />
+                        <div class="card-body">
+                            <h4 class="card-title mb-2">Comfortable Bedding</h4>
+                            <p class="card-text">With three newly updated bedrooms you will be sleeping soundly during your stay.</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top d-flex align-items-center justify-content-between">
+                            <div class="small text-primary">See more</div>
+                            <div class="small text-primary lh-1"><i-feather name="arrow-right"></i-feather></div></div
+                    ></a>
+                </div>
+            </div>
+            <div class="text-center mb-4"><h2>Your questions, answered.</h2></div>
+            <sbpro-card-accordion-faq [faqs]="faqs"></sbpro-card-accordion-faq></div></sbpro-page-section
+    ><sbpro-page-section sectionClasses="py-15 bg-img-cover overlay overlay-light overlay-80" backgroundImage='url("https://source.unsplash.com/BlIhVfXbi9s/1600x800")' borderType="angled" borderClasses="text-white"
+        ><div class="container z-1">
+            <div class="mt-5">
+                <div class="display-4 mb-3 text-dark">Ready to book?</div>
+                <a class="btn btn-primary font-weight-500" [routerLink]="">Search Availability</a>
+            </div>
+        </div></sbpro-page-section
+    ><sbpro-page-header headerClasses="bg-white py-10"
+        ><div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0 divider-right">
+                    <div class="testimonial p-lg-5">
+                        <div class="mb-3 text-yellow"><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon></div>
+                        <p class="testimonial-quote text-primary">"I was impressed with how beautiful and clean this property was. The owner definitely goes the extra mile to help their guests!"</p>
+                        <div class="testimonial-name">Adam Hall</div>
+                        <div class="testimonial-position">Lisbon, Portugal</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="testimonial p-lg-5">
+                        <div class="mb-3 text-yellow"><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon><fa-icon [icon]='["fas", "star"]'></fa-icon></div>
+                        <p class="testimonial-quote text-primary">"Amazing location, convenient parking, and a lots of amenities and extras. I will definitely be returning here whenever I'm in town."</p>
+                        <div class="testimonial-name">Lia Peterson</div>
+                        <div class="testimonial-position">Sacramento, CA, USA</div>
+                    </div>
+                </div>
+            </div>
+        </div></sbpro-page-header
+    >
+    <hr class="my-0"
+/></sbpro-layout-landing>

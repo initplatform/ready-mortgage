@@ -1,0 +1,23 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-primary',
+        buttonClasses='btn-primary'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-light page-header-light py-lg-5',
+        borderType='rounded',
+        borderClasses='text-white'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='rounded',
+        borderClasses='text-dark'
+    )
+        include pug_include/intro.pug

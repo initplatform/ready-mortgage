@@ -1,0 +1,14 @@
+@import 'styles/variables.scss';
+
+:host {
+    display: block;
+}
+
+.sb-card-collapsable-arrow {
+    cursor: pointer;
+}
+
+.collapse {
+    overflow: hidden;
+    transition: height 0.2s ease-out;
+}

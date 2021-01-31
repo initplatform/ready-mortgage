@@ -1,0 +1,36 @@
+nav.navbar.navbar-marketing.navbar-expand-lg(
+    sbproScrollSpy,
+    [ngClass]='topNavClasses'
+)
+    div.container
+        a.navbar-brand(
+            routerLink='/',
+            [ngClass]='brandClasses'
+        )
+            | SB UI Kit Pro
+        button.navbar-toggler(
+            type='button',
+            (click)='isMenuCollapsed = !isMenuCollapsed',
+            data-toggle='collapse',
+            data-target='#navbarSupportedContent',
+            aria-controls='navbarSupportedContent',
+            aria-expanded='false',
+            aria-label='Toggle navigation'
+        )
+            i-feather(name='menu')
+        #navbarSupportedContent.collapse.navbar-collapse([ngbCollapse]='isMenuCollapsed')
+            ul.navbar-nav.ml-auto.mr-lg-5
+                li.nav-item
+                    a.nav-link(routerLink='/')
+                        | Home
+                include ./pug_include/landings-dropdown.pug
+                include ./pug_include/pages-dropdown.pug
+                include ./pug_include/documentation.pug
+                
+            a(
+                href='https://shop.startbootstrap.com/product/sb-ui-kit-pro-angular/',
+                [ngClass]='buttonClasses'
+            ).btn.btn-primary.font-weight-500.ml-lg-4
+                | Buy Now
+                i-feather.ml-2(name='arrow-right')
+                

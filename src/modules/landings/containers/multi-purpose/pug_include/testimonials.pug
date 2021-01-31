@@ -1,0 +1,44 @@
+.container
+
+    .row.mb-10
+
+        .col-lg-6.mb-5.mb-lg-0.divider-right(data-aos='fade')
+            .testimonial.p-lg-5
+                .testimonial-brand.text-gray-400
+                    include /assets/img/demo/brand-logos/google.svg
+                p.testimonial-quote.text-primary
+                    | "Stripe Billing enabled us to launch our subscription product, eero Plus, on schedule and with billing fully integrated."
+                .testimonial-name
+                    | Mark Sieglock
+                .testimonial-position
+                    | Head of Business Operations
+        .col-lg-6(data-aos='fade', data-aos-delay='100')
+            .testimonial.p-lg-5
+                .testimonial-brand.text-gray-400
+                    include /assets/img/demo/brand-logos/instagram.svg
+                p.testimonial-quote.text-primary
+                    | "We implemented Stripe to introduce new billing and payment models and increased our trial conversion by 300%."
+                .testimonial-name
+                    | Sylvan Boucard
+                .testimonial-position
+                    | Payments Product Manager
+
+    .row
+        .col-lg-6.mb-lg-n10.mb-5.mb-lg-0.z-1
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                            i-feather(name='activity')
+                        .ml-4
+                            h5.text-primary Work smarter, not harder
+                            p.card-text.text-gray-600 Learn more about how our product can save you time and effort in the long run!
+        .col-lg-6.mb-lg-n10.z-1
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                            i-feather(name='code')
+                        .ml-4
+                            h5.text-secondary Built for developers
+                            p.card-text.text-gray-600 Our components, utilities, and layouts are built with developers in mind.

@@ -1,0 +1,30 @@
+.container
+    .row.mb-5
+        .col-lg-6.mt-n10.mb-5.mb-lg-0.z-1
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-primary.text-white.flex-shrink-0
+                            i-feather(name='edit-3')
+                        .ml-4
+                            h5.text-primary Work smarter, not harder
+                            p.card-text.text-gray-600 Learn more about how our product can save you time and effort in the long run!
+        .col-lg-6.mt-0.mt-lg-n10.z-1
+            a.card.text-decoration-none.h-100.lift([routerLink]='')
+                .card-body.py-5
+                    .d-flex.align-items-center
+                        .icon-stack.icon-stack-xl.bg-secondary.text-white.flex-shrink-0
+                            i-feather(name='code')
+                        .ml-4
+                            h5.text-secondary Built for developers
+                            p.card-text.text-gray-600 Our components, utilities, and layouts are built with developers in mind.
+    .row.align-items-center
+        .col-lg-6
+            h4 Get the latest news
+            p.lead.text-gray-500.mb-0 Stay in the loop with the latest updates and features added to our application!
+        .col-lg-6
+            .input-group.mb-2
+                input.form-control.form-control-solid(type='text', placeholder="youremail@example.com", aria-label="Recipient's username", aria-describedby='button-addon2')
+                .input-group-append
+                    button#button-addon2.btn.btn-primary(type='button') Sign up
+            .small.text-gray-500 You can unsubscribe at any time.

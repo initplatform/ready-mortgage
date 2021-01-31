@@ -1,0 +1,56 @@
+li.nav-item.dropdown.dropdown-xl.no-caret(
+    ngbDropdown
+)
+    a#navbarDropdownDemos.nav-link.dropdown-toggle.pointer(
+        ngbDropdownToggle,
+        data-cy='landingsDropdown',
+        role='button',
+        data-toggle='dropdown',
+        aria-haspopup='true',
+        aria-expanded='false'
+    )
+        | Landings
+        fa-icon.dropdown-arrow([icon]='["fas", "chevron-right"]')
+    .dropdown-menu.dropdown-menu-right.animated--fade-in-up.mr-lg-n15(
+        ngbDropdownMenu,
+        aria-labelledby='navbarDropdownDemos'
+    )
+        .row.no-gutters
+            .col-lg-5.p-lg-3.bg-img-cover.overlay.overlay-primary.overlay-70.d-none.d-lg-block(
+                style='background-image: url("/assets/img/backgrounds/bg-dropdown-xl.jpg")'
+            )
+                .d-flex.h-100.w-100.align-items-center.justify-content-center
+                    .text-white.text-center.z-1
+                        .mb-3 Multipurpose landing pages for a variety of projects.
+                        a.btn.btn-white.btn-sm.text-primary View All
+            .col-lg-7.p-lg-5
+                .row
+                    .col-lg-6
+                        h6.dropdown-header.text-primary Applications
+                        a.dropdown-item(routerLink='/landings/mobile-app') Mobile App
+                        a.dropdown-item(routerLink='/landings/desktop-app') Desktop App
+                        .dropdown-divider.border-0
+                        h6.dropdown-header.text-primary Business
+                        a.dropdown-item(routerLink='/landings/multipurpose') Multipurpose
+                        a.dropdown-item(routerLink='/landings/agency') Agency
+                        a.dropdown-item(routerLink='/landings/press') Press
+                        a.dropdown-item(routerLink='/landings/directory') Directory
+                        a.dropdown-item(routerLink='/landings/rental') Rental
+                        a.dropdown-item(routerLink='/landings/real-estate') Real Estate
+                        a.dropdown-item(routerLink='/landings/classifieds') Classifieds
+                        .dropdown-divider.border-0
+                        h6.dropdown-header.text-primary Lead Generation
+                        a.dropdown-item(routerLink='/landings/lead-capture') Lead Capture
+                        .dropdown-divider.border-0.d-lg-none
+                    .col-lg-6
+                        h6.dropdown-header.text-primary Personal
+                        a.dropdown-item(routerLink='/landings/resume') Resume
+                        a.dropdown-item(routerLink='/landings/portfolio') Portfolio
+                        .dropdown-divider.border-0
+                        h6.dropdown-header.text-primary Header Styles
+                        a.dropdown-item(routerLink='/landings/basic') Basic
+                        a.dropdown-item(routerLink='/landings/basic-signup') Basic (Signup)
+                        a.dropdown-item(routerLink='/landings/graphic') Graphic
+                        a.dropdown-item(routerLink='/landings/graphic-signup') Graphic (Signup)
+                        a.dropdown-item(routerLink='/landings/inner-page') Inner Page
+                        a.dropdown-item(routerLink='/landings/nav-only') Nav Only

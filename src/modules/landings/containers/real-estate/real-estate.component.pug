@@ -1,0 +1,46 @@
+sbpro-layout-landing(
+    footerClasses='bg-white footer-light'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-dark',
+        buttonClasses='btn-primary'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-cover overlay overlay-primary overlay-90 page-header-dark',
+        borderType='rounded',
+        borderClasses='text-white',
+        backgroundImage='url("https://source.unsplash.com/g39p1kDjvSY/1600x1200")'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white'
+    )
+        include pug_include/featured-listings.pug
+
+    hr.my-0
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='rounded',
+        borderClasses='text-light'
+    )
+        include pug_include/new-listings.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+        borderType='rounded',
+        borderClasses='text-white'
+
+    )
+        include pug_include/photo-masonry.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white'
+    )
+        include pug_include/testimonials.pug
+
+    hr.my-0

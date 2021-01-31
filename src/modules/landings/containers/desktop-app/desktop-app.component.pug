@@ -1,0 +1,68 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-white page-header-light',
+        borderType='rounded',
+        borderClasses='text-light'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='pb-10 pt-1 bg-light',
+    )
+        include pug_include/device-preview.pug
+
+    sbpro-page-section(
+        sectionClasses='pb-10 pt-0 bg-light',
+        borderType='rounded',
+        borderClasses='text-white'
+    )
+        include pug_include/brands-list.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+    )
+        include pug_include/features.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+    )
+        include pug_include/feature-cards.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+    )
+        include pug_include/features-detailed.pug
+
+    sbpro-page-section(
+        sectionClasses='pt-10 bg-light',
+        borderType='rounded',
+        borderClasses='text-dark'
+    )
+        include pug_include/pricing.pug
+
+    sbpro-page-section(
+        sectionClasses='pb-10 pt-15 bg-dark',
+    )
+        include pug_include/faq.pug
+
+    sbpro-page-section(
+        sectionClasses='bg-img-cover overlay overlay-primary overlay-80 pt-15',
+        backgroundImage='url("https://source.unsplash.com/e3OUQGT9bWU/1400x900")',
+        borderType='rounded',
+        borderClasses='text-white'
+    )
+        div(style="height: 35vh;")
+
+    sbpro-page-section(
+        sectionClasses='pb-10 bg-white',
+        borderType='waves',
+        borderClasses='text-dark'
+    )
+        include pug_include/company.pug

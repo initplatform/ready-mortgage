@@ -1,0 +1,52 @@
+sbpro-layout-landing(
+    footerClasses='bg-dark footer-dark'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-dark',
+        buttonClasses='btn-teal'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-cover overlay overlay-60 page-header-dark',
+        borderType='angled',
+        borderClasses='text-white',
+        backgroundImage='url("https://source.unsplash.com/6dW3xyQvcYE/1600x1200")'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='angled',
+        borderClasses='text-light'
+    )
+        include pug_include/experience.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+        borderType='angled',
+        borderClasses='text-white'
+    )
+        include pug_include/education.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='angled',
+        borderClasses='text-light'
+    )
+        include pug_include/skills.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light',
+        borderType='angled',
+        borderClasses='text-white'
+    )
+        include pug_include/interests.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-white',
+        borderType='angled',
+        borderClasses='text-dark'
+    )
+        include pug_include/contact.pug

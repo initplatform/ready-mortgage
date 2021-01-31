@@ -1,0 +1,37 @@
+li.nav-item.dropdown.no-caret(
+    ngbDropdown
+)
+    a#navbarDropdownDocs.nav-link.dropdown-toggle.pointer(
+        ngbDropdownToggle,
+        data-cy='documentationDropdown',
+        role='button',
+        data-toggle='dropdown',
+        aria-haspopup='true',
+        aria-expanded='false'
+    )
+        | Documentation
+        fa-icon.dropdown-arrow([icon]='["fas", "chevron-right"]')
+    .dropdown-menu.dropdown-menu-right.animated--fade-in-up(
+        ngbDropdownMenu,
+        aria-labelledby='navbarDropdownDocs'
+    )
+        a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro-angular')
+            .icon-stack.bg-primary-soft.text-primary.mr-4
+                fa-icon([icon]='["fas", "book-open"]')
+            div
+                .small.text-gray-500 Documentation
+                | Usage instructions and reference
+        .dropdown-divider.m-0
+        a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro-angular/development-create')
+            .icon-stack.bg-primary-soft.text-primary.mr-4
+                fa-icon([icon]='["fas", "code"]')
+            div
+                .small.text-gray-500 Develop
+                | Create a landing page
+        .dropdown-divider.m-0
+        a.dropdown-item.py-3(href='https://docs.startbootstrap.com/sb-ui-kit-pro-angular/changelog')
+            .icon-stack.bg-primary-soft.text-primary.mr-4
+                fa-icon([icon]='["fas", "file"]')
+            div
+                .small.text-gray-500 Changelog
+                | Updates and changes

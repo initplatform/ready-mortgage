@@ -1,0 +1,7 @@
+header.page-header(
+    [ngClass]='headerClasses',
+    [style.background-image]='safeBackgroudImage'
+)
+    ng-content
+    sbpro-border([borderType]='borderType', [borderClasses]='borderClasses')
+    

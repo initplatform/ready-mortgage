@@ -1,0 +1,36 @@
+sbpro-layout-landing(
+    footerClasses='bg-light footer-light'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-dark',
+        buttonClasses='btn-teal'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-repeat bg-primary page-header-dark',
+        borderType='waves',
+        borderClasses='text-light',
+        backgroundImage='url("assets/img/backgrounds/pattern-shapes.png")'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light'
+    )
+        include pug_include/grid-section.pug
+
+    hr.my-0
+
+    sbpro-page-section(
+        sectionClasses='py-10 bg-light'
+    )
+        include pug_include/browse-by-city.pug
+
+    sbpro-page-header(
+        headerClasses='bg-gradient-primary-to-secondary py-10',
+        borderType='rounded',
+        borderClasses='text-light'
+    )
+        include pug_include/callout.pug

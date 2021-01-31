@@ -1,0 +1,19 @@
+<div class="accordion accordion-faq mb-5">
+    <div class="card border-bottom" *ngIf="header">
+        <div class="card-body">
+            <div class="accordion-faq-title">
+                <div class="mr-2">
+                    <h4 class="mb-0"><ng-content select=".header-title"></ng-content></h4>
+                    <p class="card-text text-gray-500"><ng-content select=".header-subtitle"></ng-content></p>
+                </div>
+                <div class="badge badge-success-soft badge-pill text-success">{{faqs.length}} Answers</div>
+            </div>
+        </div>
+    </div>
+    <div class="card accordion-faq-item" *ngFor="let faq of faqs; let i = index">
+        <a class="card-header" [ngClass]="{collapsed: collapsed[i]}" (click)="toggle(i)" data-toggle="collapse" href="javascript:void(0);"
+            ><div class="accordion-faq-item-heading">{{faq.question}}<i-feather class="accordion-faq-item-heading-arrow" name="chevron-down"></i-feather></div
+        ></a>
+        <div class="collapse show" #collapsibleSection><div class="card-body border-bottom">{{faq.answer}}</div></div>
+    </div>
+</div>

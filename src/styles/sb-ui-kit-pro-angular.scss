@@ -1,0 +1,41 @@
+// Set icon sizing within icon stacks for Angular icon sets
+
+.icon-stack {
+    i-feather {
+        height: 1rem;
+        width: 1rem;
+    }
+}
+
+.icon-stack-lg {
+    i-feather {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+.icon-stack-xl {
+    i-feather {
+        height: 1.75rem;
+        width: 1.75rem;
+    }
+}
+
+// Set icon size within text arrow icon utility for Angular icon sets
+.text-arrow-icon {
+    i-feather {
+        height: inherit;
+        width: inherit;
+    }
+}
+
+i-feather {
+    height: auto !important;
+    width: auto !important;
+}
+
+// Line height utility for parent elements containing icons
+
+.lh-1 {
+    line-height: 1 !important;
+}

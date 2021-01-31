@@ -1,0 +1,36 @@
+sbpro-layout-landing(
+    footerClasses='bg-white footer-light'
+)
+
+    sb-top-nav(
+        topNavClasses='bg-white navbar-light',
+        brandClasses='text-dark',
+        buttonClasses='btn-primary'
+    )
+
+    sbpro-page-header(
+        headerClasses='bg-img-repeat bg-secondary page-header-dark',
+        borderType='angled',
+        borderClasses='text-wite',
+        backgroundImage='url("https://www.transparenttextures.com/patterns/inspiration-geometry.png")'
+    )
+        include pug_include/header.pug
+
+    sbpro-page-section(
+        sectionClasses='py-5 bg-white',
+        borderType='angled',
+        borderClasses='text-light'
+    )
+        include pug_include/brands.pug
+
+    sbpro-page-section(
+        sectionClasses='pt-10 bg-light',
+        borderType='angled',
+        borderClasses='text-white'
+    )
+        include pug_include/features-boxes.pug
+
+    sbpro-page-section(
+        sectionClasses='bg-white border-bottom py-10'
+    )
+        include pug_include/get-started.pug
