@@ -13,7 +13,8 @@
             [
                 "app",
                 "sb",
-                "sbpro"
+                "sbpro",
+                "rdm"
             ],
             "kebab-case"
         ],
@@ -28,7 +29,8 @@
             [
                 "app",
                 "sb",
-                "sbpro"
+                "sbpro",
+                "rdm"
             ],
             "camelCase"
         ],
