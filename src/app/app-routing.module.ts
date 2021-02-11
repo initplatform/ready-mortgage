@@ -5,18 +5,17 @@ const routes: Routes = [
     {
         path: '',
         loadChildren: () =>
-            import('modules/landings/landings-routing.module').then((m) => m.LandingsRoutingModule),
+            import('modules/assistant/assistant-routing.module').then(
+                (m) => m.AssistantRoutingModule
+            ),
     },
     {
-        path: 'landings',
+        path: 'assistant',
         pathMatch: 'full',
         loadChildren: () =>
-            import('modules/landings/landings-routing.module').then((m) => m.LandingsRoutingModule),
-    },
-    {
-        path: 'pages',
-        loadChildren: () =>
-            import('modules/pages/pages-routing.module').then((m) => m.PagesRoutingModule),
+            import('modules/assistant/assistant-routing.module').then(
+                (m) => m.AssistantRoutingModule
+            ),
     },
     {
         path: 'error',

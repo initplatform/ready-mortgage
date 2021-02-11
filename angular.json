@@ -24,13 +24,22 @@
                         "tsConfig": "tsconfig.app.json",
                         "aot": false,
                         "assets": [
-                            "src/favicon.png",
-                            "src/assets"
+                            {
+                                "glob": "**/*",
+                                "input": "src/assets/",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "favicon.png",
+                                "input": "src/",
+                                "output": "/"
+                            }
                         ],
                         "styles": [
                             "src/styles/styles.scss",
                             "node_modules/aos/dist/aos.css",
-                            "node_modules/lity/dist/lity.css"
+                            "node_modules/lity/dist/lity.css",
+                            "node_modules/bootstrap-icons/font/bootstrap-icons.css"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
