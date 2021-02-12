@@ -1,0 +1,31 @@
+.row.justify-content-center.text-center.mb-5
+    h3 How soon do you want to purchase a home?
+.row.justify-content-center.text-center.mb-10
+    .col-lg-4.col-md-6.mb-5
+        a.card.card-link.h-100.lift.pointer(
+            (click)='homeKnown()'
+        )
+            .card-body.p-5
+                .icon-stack.icon-stack-huge.bg-primary-soft.text-primary.mb-4
+                    i.bi.bi-house-door
+                h4 I've found a home and I'm ready now
+                //- p.card-text Issues related to logging in, out, or about multiple devices.
+    .col-lg-4.col-md-6.mb-5
+        a.card.card-link.h-100.lift.pointer(
+            (click)='homeShopping()'
+        )
+            .card-body.p-5
+                .icon-stack.icon-stack-huge.less-1.bg-green-soft.text-green.mb-4
+                    i.bi.bi-search
+                h4 I'm starting my home search
+                //- p.card-text Connecting with 3rd party apps to exchange data.
+    .col-lg-4.col-md-6.mb-5
+        a.card.card-link.h-100.lift.pointer(
+            (click)='research()'
+        )
+            .card-body.p-5
+                .icon-stack.icon-stack-huge.more-3.bg-green-soft.text-green.mb-4
+                    i.bi.bi-question
+                h4 What can I afford?
+                //- p.card-text Connecting with 3rd party apps to exchange data.
+

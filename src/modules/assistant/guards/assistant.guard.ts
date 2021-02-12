@@ -11,8 +11,6 @@ export class AssistantGuard implements CanActivate {
     constructor(private store: Store<{}>, private indexedDBService: IndexedDBService) {}
 
     canActivate(): Observable<boolean> {
-        console.log('asd');
-
         return this.checkStore().pipe(
             switchMap(() => of(true)),
             catchError(() => of(false))

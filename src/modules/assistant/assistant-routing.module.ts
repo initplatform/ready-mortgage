@@ -35,11 +35,25 @@ export const ROUTES: Routes = [
                 component: assistantContainers.HomeComponent,
             },
             {
-                path: 'purpose',
+                path: 'purchase-stage',
                 data: {
-                    title: 'Purpose - Ready Mortgage',
+                    title: 'Stage - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.PurposeComponent,
+                component: assistantComponents.PurchaseStageComponent,
+            },
+            {
+                path: 'remaining-mortgage',
+                data: {
+                    title: 'Remaining - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.RemainingMortgageComponent,
+            },
+            {
+                path: 'known-home-price',
+                data: {
+                    title: 'Home Price - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.KnownHomePriceComponent,
             },
             {
                 path: '**',

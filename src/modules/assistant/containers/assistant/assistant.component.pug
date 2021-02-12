@@ -10,5 +10,17 @@ sbpro-layout-landing(
     sbpro-page-section.top-section(
         sectionClasses='bg-white',
     )
-    
-        router-outlet
+        .page-header-content.pt-5
+            .container
+                //- .row.justify-content-center
+                h4 Confidence Meter
+                .progress.mb-5
+                    .progress-bar.bg-primary(
+                        role='progressbar',
+                        style='width: 10%',
+                        aria-valuenow='100',
+                        aria-valuemin='0',
+                        aria-valuemax='100'
+                    )
+
+                router-outlet

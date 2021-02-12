@@ -2,11 +2,11 @@ import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { PurposeComponent } from './purpose.component';
+import { KnownHomePriceComponent } from './known-home-price.component';
 
 @Component({
     template: `
-        <rdm-purpose [someInput]="someInput" (someFunction)="someFunction($event)"></rdm-purpose>
+        <rdm-known-home-price [someInput]="someInput" (someFunction)="someFunction($event)"></rdm-known-home-price>
     `,
 })
 class TestHostComponent {
@@ -14,19 +14,19 @@ class TestHostComponent {
     // someFunction(event: Event) {}
 }
 
-describe('PurposeComponent', () => {
+describe('KnownHomePriceComponent', () => {
     let fixture: ComponentFixture<TestHostComponent>;
     let hostComponent: TestHostComponent;
     let hostComponentDE: DebugElement;
     let hostComponentNE: Element;
 
-    let component: PurposeComponent;
+    let component: KnownHomePriceComponent;
     let componentDE: DebugElement;
     let componentNE: Element;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestHostComponent, PurposeComponent],
+            declarations: [TestHostComponent, KnownHomePriceComponent],
             imports: [NoopAnimationsModule],
             providers: [],
             schemas: [NO_ERRORS_SCHEMA],
@@ -45,6 +45,6 @@ describe('PurposeComponent', () => {
     });
 
     it('should display the component', () => {
-        expect(hostComponentNE.querySelector('rdm-purpose')).toEqual(jasmine.anything());
+        expect(hostComponentNE.querySelector('rdm-known-home-price')).toEqual(jasmine.anything());
     });
 });

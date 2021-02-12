@@ -17,28 +17,69 @@
         height: 12rem;
         width: 12rem;
         font-size: 7rem;
-        svg {
-            height: 7rem;
-            width: 7rem;
-        }    
+        &.more-1 {
+            font-size: 8rem;
+        }
+        &.more-2 {
+            font-size: 9rem;
+        }
+        &.more-3 {
+            font-size: 10rem;
+        }
+        &.less-1 {
+            font-size: 6rem;
+        }
+        &.less-2 {
+            font-size: 5rem;
+        }
+        &.less-3 {
+            font-size: 4rem;
+        }
     }
     @include media-breakpoint-between(sm, lg) { 
         height: 10rem;
         width: 10rem;
         font-size: 6rem;
-        svg {
-            height: 6rem;
-            width: 6rem;
-        }    
+        &.more-1 {
+            font-size: 7rem;
+        }
+        &.more-2 {
+            font-size: 8rem;
+        }
+        &.more-3 {
+            font-size: 9rem;
+        }
+        &.less-1 {
+            font-size: 5rem;
+        }
+        &.less-2 {
+            font-size: 4rem;
+        }
+        &.less-3 {
+            font-size: 3rem;
+        }
     }
     @include media-breakpoint-only(xs) { 
         height: 8rem;
         width: 8rem;
         font-size: 5rem;
-        svg {
-            height: 5rem;
-            width: 5rem;
-        }    
+        &.more-1 {
+            font-size: 6rem;
+        }
+        &.more-2 {
+            font-size: 7rem;
+        }
+        &.more-3 {
+            font-size: 8rem;
+        }
+        &.less-1 {
+            font-size: 4rem;
+        }
+        &.less-2 {
+            font-size: 3rem;
+        }
+        &.less-3 {
+            font-size: 2rem;
+        }
     }
-
 }

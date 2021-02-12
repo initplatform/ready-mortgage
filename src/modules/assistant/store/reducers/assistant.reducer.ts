@@ -24,5 +24,26 @@ export const assistantReducer = createImmerReducer(
         assistant,
         loading: false,
         loaded: true,
-    }))
+    })),
+    on(assistantActions.setJourney, (state, { journey }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.journey = journey;
+        return state;
+    }),
+    on(assistantActions.setGoal, (state, { goal }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.goal = goal;
+        return state;
+    }),
+    on(assistantActions.setSearchStage, (state, { searchStage }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.searchStage = searchStage;
+        return state;
+    })
 );
