@@ -24,6 +24,7 @@ export const ROUTES: Routes = [
     },
     {
         path: 'assistant',
+        canActivate: [assistantGuards.AssistantGuard],
         component: assistantContainers.AssistantComponent,
         children: [
             {

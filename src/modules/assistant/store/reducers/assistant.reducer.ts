@@ -21,7 +21,7 @@ export const assistantReducer = createImmerReducer(
     })),
     on(assistantActions.loadAssistantSuccess, (state, { assistant }) => ({
         ...state,
-        ...assistant,
+        assistant,
         loading: false,
         loaded: true,
     }))
