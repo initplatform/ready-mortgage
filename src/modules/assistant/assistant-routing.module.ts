@@ -40,6 +40,11 @@ export const ROUTES: Routes = [
                 } as SBRouteData,
                 component: assistantComponents.PurposeComponent,
             },
+            {
+                path: '**',
+                pathMatch: 'full',
+                redirectTo: '/error/404',
+            },
         ],
     },
 ];

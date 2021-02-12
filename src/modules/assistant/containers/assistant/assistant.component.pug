@@ -1,14 +1,14 @@
 sbpro-layout-landing(
-    footerClasses='bg-light footer-light'
+    footerClasses='bg-primary text-white'
 )
     sb-top-nav(
-        topNavClasses='bg-transparent navbar-light fixed-top',
-        brandClasses='text-primary',
-        buttonClasses='btn-primary'
+        topNavClasses='bg-primary navbar-dark fixed-top',
+        brandClasses='text-white',
+        buttonClasses='btn-white'
     )
 
-    sbpro-page-header(
-        headerClasses='bg-white page-header-light',
-        borderClasses='text-light'
+    sbpro-page-section.top-section(
+        sectionClasses='bg-white',
     )
+    
         router-outlet

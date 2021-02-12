@@ -1,3 +1,44 @@
 .pointer {
     cursor: pointer;
 }
+
+.top-section {
+    display: block;
+    @include media-breakpoint-between(lg, xl) { 
+        margin-top: 50px;
+    }
+    @include media-breakpoint-between(xs, md) { 
+        margin-top: 100px;
+    }
+}
+
+.icon-stack-huge {
+    @include media-breakpoint-only(xl) { 
+        height: 12rem;
+        width: 12rem;
+        font-size: 7rem;
+        svg {
+            height: 7rem;
+            width: 7rem;
+        }    
+    }
+    @include media-breakpoint-between(sm, lg) { 
+        height: 10rem;
+        width: 10rem;
+        font-size: 6rem;
+        svg {
+            height: 6rem;
+            width: 6rem;
+        }    
+    }
+    @include media-breakpoint-only(xs) { 
+        height: 8rem;
+        width: 8rem;
+        font-size: 5rem;
+        svg {
+            height: 5rem;
+            width: 5rem;
+        }    
+    }
+
+}
