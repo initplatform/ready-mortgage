@@ -1,0 +1,9 @@
+.d-flex.justify-content-between
+    button.btn.btn-light.disabled(
+        type="button",
+        (click)='back()'
+    ) Previous
+    button.btn.btn-secondary(
+        *ngIf='showSkip',
+        type="button"
+    ) Skip

@@ -1,0 +1,10 @@
+form
+    .form-group
+        label(for='formControlRange') Example Range input
+        input.form-control-range#formControlRange(
+            type='range',
+            [formControl]='rangeControl',
+            [min]='min',
+            [max]='max',
+            [step]='step'
+        ) 

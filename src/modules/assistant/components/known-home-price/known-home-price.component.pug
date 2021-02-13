@@ -1,1 +1,15 @@
-p known-home-price
+.row.justify-content-center.text-center.mb-5
+    h3 What is your estimated purchase price?
+
+rdm-range(
+    #homePrice,
+    min=0,
+    max=2000000,
+    initialValue=300000,
+    step=20000,
+    (currentValue)='currentValue($event)'
+)
+
+button.btn.btn-teal.btn-block.font-weight-500(type='button', (click)='test()') test
+
+rdm-back-skip

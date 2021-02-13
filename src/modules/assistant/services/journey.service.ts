@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { journeys } from '@modules/assistant/data';
 import { Assistant } from '@modules/assistant/models';
 import { Store } from '@ngrx/store';
 
 @Injectable()
 export class JourneyService {
-    constructor(private router: Router, private store: Store) {}
+    private history: string[] = [];
+
+    constructor(private router: Router, private store: Store) {
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.history.push(event.urlAfterRedirects);
+                console.log(event.urlAfterRedirects);
+            }
+        });
+    }
 
     goToNextStep(assistant: Assistant) {
         const urlTree = this.router.parseUrl(this.router.url);
