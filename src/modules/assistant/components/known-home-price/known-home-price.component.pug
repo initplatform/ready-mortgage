@@ -7,9 +7,14 @@ rdm-range(
     max=2000000,
     initialValue=300000,
     step=20000,
-    (currentValue)='currentValue($event)'
+    [currency]='true',
+    spread=20000,
+    [maxValueIsCeiling]='false'
 )
 
-button.btn.btn-teal.btn-block.font-weight-500(type='button', (click)='test()') test
+//- button.btn.btn-teal.btn-block.font-weight-500(
+//-     type='button',
+//-     (click)='test()'
+//- ) test
 
 rdm-back-skip

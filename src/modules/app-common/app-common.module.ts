@@ -24,17 +24,22 @@ import * as appCommonGuards from './guards';
 /* Services */
 import * as appCommonServices from './services';
 
+/* Pipes */
+import * as appCommonPipes from './pipes';
+
 @NgModule({
     imports: [CommonModule, RouterModule, ...modules],
     declarations: [
         ...appCommonContainers.containers,
         ...appCommonComponents.components,
         ...appCommonDirectives.directives,
+        ...appCommonPipes.pipes,
     ],
     exports: [
         ...appCommonContainers.containers,
         ...appCommonComponents.components,
         ...appCommonDirectives.directives,
+        ...appCommonPipes.pipes,
         ...modules,
     ],
 })
