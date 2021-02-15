@@ -5,10 +5,10 @@
 .top-section {
     display: block;
     @include media-breakpoint-between(lg, xl) { 
-        margin-top: 50px;
+        margin-top: 64px;
     }
     @include media-breakpoint-between(xs, md) { 
-        margin-top: 100px;
+        margin-top: 108px;
     }
 }
 

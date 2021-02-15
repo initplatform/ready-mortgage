@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { RangeComponent } from '@modules/assistant/components/range/range.component';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Assistant, AssistantCreditEstimate } from '@modules/assistant/models';
 import { assistantActions, assistantSelectors } from '@modules/assistant/store';
 import { Store } from '@ngrx/store';

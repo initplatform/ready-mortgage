@@ -49,4 +49,26 @@ export class BuyerDetails {
     downPayment!: number;
     estimatedCreditScore!: AssistantCreditEstimate;
     workingWithAgent!: boolean;
+    incomeSources: IncomeSource[] = [];
+}
+
+export enum IncomeSourceName {
+    'SALARY' = 'SALARY',
+    'HOURLY' = 'HOURLY',
+    'RENTAL' = 'RENTAL',
+    'OTHER' = 'OTHER',
+}
+
+export enum IncomeSourceOtherName {
+    'PENSION' = 'PENSION',
+    'SOCIAL_SECURITY' = 'SOCIAL_SECURITY',
+    'CHILD_SUPPORT' = 'CHILD_SUPPORT',
+    'ALIMONY' = 'ALIMONY',
+    'OTHER' = 'OTHER',
+}
+
+export interface IncomeSource {
+    name: IncomeSourceName;
+    otherIncome?: IncomeSourceOtherName;
+    annualIncome: number;
 }
