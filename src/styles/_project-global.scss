@@ -89,3 +89,10 @@ rdm-steps {
         display:none !important;
     }    
 }
+
+.btn-dynamic-block {
+    @include media-breakpoint-between(xs, md) {
+          display: block;
+          width: 100%;
+    }      
+}

@@ -59,5 +59,12 @@ export const assistantReducer = createImmerReducer(
         }
         state.assistant.buyer.downPayment = downPayment;
         return state;
+    }),
+    on(assistantActions.setEstimatedCreditScore, (state, { estimatedCreditScore }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.buyer.estimatedCreditScore = estimatedCreditScore;
+        return state;
     })
 );

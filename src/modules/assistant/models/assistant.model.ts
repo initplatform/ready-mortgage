@@ -14,6 +14,7 @@ export enum AssistantGoal {
 }
 
 export enum AssistantCreditEstimate {
+    'BAD' = 'BAD',
     'POOR' = 'POOR',
     'FAIR' = 'FAIR',
     'GOOD' = 'GOOD',
@@ -46,6 +47,6 @@ export class BuyerDetails {
     phone!: string;
     email!: string;
     downPayment!: number;
-    estimatedCredit!: AssistantCreditEstimate;
+    estimatedCreditScore!: AssistantCreditEstimate;
     workingWithAgent!: boolean;
 }

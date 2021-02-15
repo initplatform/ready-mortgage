@@ -19,7 +19,7 @@
     ) &nbsp; ({{currentValue/max | percent}})  
     h4.text-secondary(
         *ngIf='showPercent && originalMax'
-    ) &nbsp; ({{currentValue/originalMax | percent}})  
+    ) &nbsp; ({{currentValue/originalMax | percent : '1.1'}})  
 form
     .form-group
         input.form-control-range#formControlRange(

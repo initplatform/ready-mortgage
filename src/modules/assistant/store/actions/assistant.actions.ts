@@ -1,5 +1,6 @@
 import {
     Assistant,
+    AssistantCreditEstimate,
     AssistantGoal,
     AssistantSearchStage,
     JourneyName,
@@ -33,6 +34,10 @@ export const setDownPayment = createAction(
     '[Assistant] Set Down Payment',
     props<{ downPayment: number }>()
 );
+export const setEstimatedCreditScore = createAction(
+    '[Assistant] Set Estimated Credit Score',
+    props<{ estimatedCreditScore: AssistantCreditEstimate }>()
+);
 
 const all = union({
     loadAssistant,
@@ -43,5 +48,6 @@ const all = union({
     setSearchStage,
     setEstimatedPurchasePrice,
     setDownPayment,
+    setEstimatedCreditScore,
 });
 export type AllActions = typeof all;
