@@ -31,13 +31,13 @@ export class Assistant {
     journey: JourneyName = JourneyName.GETTING_STARTED;
     goal!: AssistantGoal;
     searchStage!: AssistantSearchStage;
-    property: PropertyDetails | null = new PropertyDetails();
-    buyer: BuyerDetails | null = new BuyerDetails();
+    property: PropertyDetails = new PropertyDetails();
+    buyer: BuyerDetails = new BuyerDetails();
 }
 
 export class PropertyDetails {
     zipCode!: string;
-    estimatedPrice!: number;
+    estimatedPurchasePrice!: number;
 }
 
 export class BuyerDetails {

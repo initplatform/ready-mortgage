@@ -1,0 +1,8 @@
+.step.step-secondary.mb-5
+    .step-item(
+        *ngFor='let step of steps',
+        [ngClass]='{active: step.path === currentPath}'
+    )
+        a.step-item-link(
+            [ngClass]='{active: step.path === currentPath}'
+        ) {{step.name}}

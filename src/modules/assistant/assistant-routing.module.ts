@@ -56,6 +56,34 @@ export const ROUTES: Routes = [
                 component: assistantComponents.KnownHomePriceComponent,
             },
             {
+                path: 'down-payment',
+                data: {
+                    title: 'Down Payment - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.DownPaymentComponent,
+            },
+            {
+                path: 'credit-score',
+                data: {
+                    title: 'Credit Score - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.CreditScoreComponent,
+            },
+            {
+                path: 'income',
+                data: {
+                    title: 'Income - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.IncomeComponent,
+            },
+            {
+                path: 'debt',
+                data: {
+                    title: 'Debt - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponents.DebtComponent,
+            },
+            {
                 path: '**',
                 pathMatch: 'full',
                 redirectTo: '/error/404',

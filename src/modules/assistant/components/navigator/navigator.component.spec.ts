@@ -2,11 +2,11 @@ import { Component, DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { BackSkipComponent } from './back-skip.component';
+import { NavigatorComponent } from './navigator.component';
 
 @Component({
     template: `
-        <rdm-back-skip [someInput]="someInput" (someFunction)="someFunction($event)"></rdm-back-skip>
+        <rdm-navigator [someInput]="someInput" (someFunction)="someFunction($event)"></rdm-navigator>
     `,
 })
 class TestHostComponent {
@@ -14,19 +14,19 @@ class TestHostComponent {
     // someFunction(event: Event) {}
 }
 
-describe('BackSkipComponent', () => {
+describe('NavigatorComponent', () => {
     let fixture: ComponentFixture<TestHostComponent>;
     let hostComponent: TestHostComponent;
     let hostComponentDE: DebugElement;
     let hostComponentNE: Element;
 
-    let component: BackSkipComponent;
+    let component: NavigatorComponent;
     let componentDE: DebugElement;
     let componentNE: Element;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [TestHostComponent, BackSkipComponent],
+            declarations: [TestHostComponent, NavigatorComponent],
             imports: [NoopAnimationsModule],
             providers: [],
             schemas: [NO_ERRORS_SCHEMA],
@@ -45,6 +45,6 @@ describe('BackSkipComponent', () => {
     });
 
     it('should display the component', () => {
-        expect(hostComponentNE.querySelector('rdm-back-skip')).toEqual(jasmine.anything());
+        expect(hostComponentNE.querySelector('rdm-navigator')).toEqual(jasmine.anything());
     });
 });

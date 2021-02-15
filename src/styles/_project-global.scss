@@ -83,3 +83,9 @@
         }
     }
 }
+
+rdm-steps {
+    @include media-breakpoint-between(xs, sm) { 
+        display:none !important;
+    }    
+}

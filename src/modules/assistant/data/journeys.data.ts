@@ -9,6 +9,7 @@ import {
 export const journeys: Journey[] = [
     {
         name: JourneyName.GETTING_STARTED,
+        showSteps: false,
         steps: [
             {
                 path: '/assistant',
@@ -25,6 +26,7 @@ export const journeys: Journey[] = [
     },
     {
         name: JourneyName.REFINANCE,
+        showSteps: false,
         steps: [
             {
                 path: '/assistant',
@@ -36,6 +38,7 @@ export const journeys: Journey[] = [
     },
     {
         name: JourneyName.PURCHASE_HOME_KNOWN,
+        showSteps: true,
         steps: [
             {
                 path: '/assistant/purchase-stage',
@@ -46,7 +49,24 @@ export const journeys: Journey[] = [
                 },
             },
             {
-                path: '/assistant/remaining-mortgage',
+                path: '/assistant/known-home-price',
+                namedStep: 'Home Price',
+            },
+            {
+                path: '/assistant/down-payment',
+                namedStep: 'Down Payment',
+            },
+            {
+                path: '/assistant/credit-score',
+                namedStep: 'Credit Score',
+            },
+            {
+                path: '/assistant/income',
+                namedStep: 'Income',
+            },
+            {
+                path: '/assistant/debt',
+                namedStep: 'Debt',
             },
         ],
     },

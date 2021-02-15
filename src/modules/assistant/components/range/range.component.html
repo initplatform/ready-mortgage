@@ -4,6 +4,8 @@
     <h4 *ngIf="currency &amp;&amp; spread &amp;&amp; currentValue != max">{{currentValue | currency: 'USD' : 'symbol' : '1.0'}} - {{(currentValue | addStrings: spread) | currency: 'USD' : 'symbol' : '1.0'}}</h4>
     <h4 *ngIf="currency &amp;&amp; spread &amp;&amp; currentValue == max &amp;&amp; !maxValueIsCeiling">{{currentValue | currency: 'USD' : 'symbol' : '1.0'}}+</h4>
     <h4 *ngIf="currency &amp;&amp; spread &amp;&amp; currentValue == max &amp;&amp; maxValueIsCeiling">{{currentValue | currency: 'USD' : 'symbol' : '1.0'}}</h4>
+    <h4 class="text-secondary" *ngIf="showPercent &amp;&amp; !originalMax">&nbsp; ({{currentValue/max | percent}})</h4>
+    <h4 class="text-secondary" *ngIf="showPercent &amp;&amp; originalMax">&nbsp; ({{currentValue/originalMax | percent}})</h4>
 </div>
 <form>
     <div class="form-group"><input class="form-control-range" id="formControlRange" type="range" [formControl]="rangeControl" [min]="min" [max]="max" [step]="step" /></div>

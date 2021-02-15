@@ -11,8 +11,10 @@ export enum JourneyName {
 export interface JourneyStep {
     path: string;
     branch?: (assistant: Assistant) => string | undefined;
+    namedStep?: string;
 }
 export interface Journey {
     name: JourneyName;
+    showSteps: boolean;
     steps: JourneyStep[];
 }

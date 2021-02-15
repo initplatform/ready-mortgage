@@ -3,9 +3,11 @@ import { NavigationEnd, Router } from '@angular/router';
 import { journeys } from '@modules/assistant/data';
 import { Assistant } from '@modules/assistant/models';
 import { Store } from '@ngrx/store';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class JourneyService {
+    private _currentPath$ = new ReplaySubject<string>(1);
     private history: string[] = [];
 
     constructor(private router: Router, private store: Store) {
@@ -13,14 +15,13 @@ export class JourneyService {
             if (event instanceof NavigationEnd) {
                 this.history.push(event.urlAfterRedirects);
                 console.log(event.urlAfterRedirects);
+                this._currentPath$.next(event.urlAfterRedirects);
             }
         });
     }
 
     goToNextStep(assistant: Assistant) {
-        const urlTree = this.router.parseUrl(this.router.url);
-        urlTree.queryParams = {};
-        const currentPath = urlTree.toString();
+        const currentPath = this.currentPath();
         const currentJourney = assistant.journey;
         const foundJourney = journeys.find((journey) => journey.name === currentJourney);
         if (!foundJourney) {
@@ -42,5 +43,14 @@ export class JourneyService {
             throw new Error('REACHED_UNEXPECTED_END_OF_JOURNEY');
         }
         this.router.navigateByUrl(nextStep.path);
+    }
+
+    currentPath() {
+        const urlTree = this.router.parseUrl(this.router.url);
+        urlTree.queryParams = {};
+        return urlTree.toString();
+    }
+    get currentPath$() {
+        return this._currentPath$;
     }
 }

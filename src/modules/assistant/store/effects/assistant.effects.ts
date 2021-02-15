@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Assistant } from '@modules/assistant/models';
-import { AssistantService, JourneyService } from '@modules/assistant/services';
+import { AssistantService, IndexedDBService, JourneyService } from '@modules/assistant/services';
 import { assistantActions } from '@modules/assistant/store/actions';
 import { assistantSelectors } from '@modules/assistant/store/selectors';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
+import { from, of } from 'rxjs';
 import { concatMap, map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 @Injectable()
@@ -14,7 +14,8 @@ export class AssistantEffects {
         private actions$: Actions,
         private store: Store,
         private assistantService: AssistantService,
-        private journeyService: JourneyService
+        private journeyService: JourneyService,
+        private indexedDBService: IndexedDBService
     ) {}
 
     loadAssistant$ = createEffect(() =>
@@ -32,17 +33,26 @@ export class AssistantEffects {
         )
     );
 
-    setGoal$ = createEffect(
+    setData$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(assistantActions.setGoal, assistantActions.setSearchStage),
+                ofType(
+                    assistantActions.setGoal,
+                    assistantActions.setSearchStage,
+                    assistantActions.setEstimatedPurchasePrice,
+                    assistantActions.setDownPayment
+                ),
                 concatMap((action) =>
                     of(action).pipe(
                         withLatestFrom(this.store.select(assistantSelectors.selectAssistant))
                     )
                 ),
-                map(([action, assistant]) => {
-                    this.journeyService.goToNextStep(assistant);
+                switchMap(([action, assistant]) => {
+                    return from(this.indexedDBService.putAssistant(assistant)).pipe(
+                        map(() => {
+                            this.journeyService.goToNextStep(assistant);
+                        })
+                    );
                 })
             ),
         { dispatch: false }

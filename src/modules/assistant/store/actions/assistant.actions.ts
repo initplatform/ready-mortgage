@@ -25,6 +25,14 @@ export const setSearchStage = createAction(
     '[Assistant] Set Search Stage',
     props<{ searchStage: AssistantSearchStage }>()
 );
+export const setEstimatedPurchasePrice = createAction(
+    '[Assistant] Set Estimated Purchase Price',
+    props<{ estimatedPurchasePrice: number }>()
+);
+export const setDownPayment = createAction(
+    '[Assistant] Set Down Payment',
+    props<{ downPayment: number }>()
+);
 
 const all = union({
     loadAssistant,
@@ -33,5 +41,7 @@ const all = union({
     setJourney,
     setGoal,
     setSearchStage,
+    setEstimatedPurchasePrice,
+    setDownPayment,
 });
 export type AllActions = typeof all;

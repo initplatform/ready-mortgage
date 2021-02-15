@@ -12,11 +12,13 @@ import { Subscription } from 'rxjs';
 export class RangeComponent implements OnInit, OnDestroy {
     @Input() min!: number;
     @Input() max!: number;
+    @Input() originalMax!: number;
     @Input() initialValue!: number;
     @Input() step!: number;
     @Input() currency!: boolean;
     @Input() spread!: number;
     @Input() maxValueIsCeiling = true;
+    @Input() showPercent = false;
 
     currentValue!: number;
 

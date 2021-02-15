@@ -45,5 +45,19 @@ export const assistantReducer = createImmerReducer(
         }
         state.assistant.searchStage = searchStage;
         return state;
+    }),
+    on(assistantActions.setEstimatedPurchasePrice, (state, { estimatedPurchasePrice }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.property.estimatedPurchasePrice = estimatedPurchasePrice;
+        return state;
+    }),
+    on(assistantActions.setDownPayment, (state, { downPayment }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.buyer.downPayment = downPayment;
+        return state;
     })
 );

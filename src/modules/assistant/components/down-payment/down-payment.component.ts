@@ -6,13 +6,13 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'rdm-known-home-price',
+    selector: 'rdm-down-payment',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './known-home-price.component.html',
-    styleUrls: ['known-home-price.component.scss'],
+    templateUrl: './down-payment.component.html',
+    styleUrls: ['down-payment.component.scss'],
 })
-export class KnownHomePriceComponent implements OnInit, OnDestroy {
-    @ViewChild('homePrice') homePrice!: RangeComponent;
+export class DownPaymentComponent implements OnInit, OnDestroy {
+    @ViewChild('downPayment') downPayment!: RangeComponent;
     subscription: Subscription = new Subscription();
 
     assistant!: Assistant;
@@ -31,8 +31,8 @@ export class KnownHomePriceComponent implements OnInit, OnDestroy {
     }
     continue() {
         this.store.dispatch(
-            assistantActions.setEstimatedPurchasePrice({
-                estimatedPurchasePrice: this.homePrice.currentValue,
+            assistantActions.setDownPayment({
+                downPayment: this.downPayment.currentValue,
             })
         );
     }

@@ -5,16 +5,13 @@ rdm-range(
     #homePrice,
     min=0,
     max=2000000,
-    initialValue=300000,
+    [initialValue]='assistant.property.estimatedPurchasePrice',
     step=20000,
     [currency]='true',
     spread=20000,
     [maxValueIsCeiling]='false'
 )
 
-//- button.btn.btn-teal.btn-block.font-weight-500(
-//-     type='button',
-//-     (click)='test()'
-//- ) test
-
-rdm-back-skip
+rdm-navigator(
+    (continue)='continue()'
+)

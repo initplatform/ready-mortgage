@@ -7,3 +7,8 @@
         *ngIf='showSkip',
         type="button"
     ) Skip
+    button.btn.btn-primary(
+        *ngIf='!showSkip',
+        (click)='_continue()',
+        type="button"
+    ) Continue

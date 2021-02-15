@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AssistantGoal, AssistantSearchStage, JourneyName } from '@modules/assistant/models';
+import { AssistantSearchStage, JourneyName } from '@modules/assistant/models';
 import { assistantActions } from '@modules/assistant/store';
 import { Store } from '@ngrx/store';
 
