@@ -23,6 +23,7 @@ export class CardNavigationComponent extends CardBase implements OnInit, AfterVi
     @Input() navNames!: string[];
     @Input() templates!: TemplateRef<unknown>[];
     @Input() navType: 'tabbed' | 'pill' | 'vertical' = 'tabbed';
+    @Input() headerActions!: boolean;
 
     selectedIndex = 0;
     selectedIndexForFade = 0;
@@ -34,11 +35,14 @@ export class CardNavigationComponent extends CardBase implements OnInit, AfterVi
 
     ngOnInit() {
         super.ngOnInit();
+        if (this.headerActions) {
+            this.cardClasses.push('card-header-actions');
+        }
     }
 
     ngAfterViewInit() {
         this.fadeableElement = this.fadeableSection.nativeElement;
-        this.fadeableElement.addEventListener('transitionend', event => {
+        this.fadeableElement.addEventListener('transitionend', (event) => {
             this.selectedIndexForFade = this.selectedIndex;
             this.fadeableElement.style.opacity = '100';
             this.changeDetectorRef.detectChanges();

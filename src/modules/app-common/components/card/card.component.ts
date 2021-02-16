@@ -18,10 +18,10 @@ export class CardComponent extends CardBase implements OnInit {
     ngOnInit() {
         super.ngOnInit();
         if (this.headerActions) {
-            this.cardClasses.push('sb-card-header-actions');
+            this.cardClasses.push('card-header-actions');
         }
         if (this.scrollable) {
-            this.cardClasses.push('sb-card-scrollable');
+            this.cardClasses.push('card-scrollable');
         }
     }
 }

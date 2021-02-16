@@ -15,21 +15,58 @@
         <div class="font-weight-700 d-inline-block">&nbsp; Other</div>
     </button>
 </div>
-<div class="row justify-content-left mb-3"><h3>Total Income {{totalIncome}}</h3></div>
-<div class="row justify-content-left mb-3">
-    <form [formGroup]="incomeForm">
-        <ng-container formArrayName="incomeSources"
-            ><div class="form-group" *ngFor="let incomeSource of incomeSources.controls; index as i">
-                <ng-container [formGroupName]="i"
-                    ><label class="small mb-1" [attr.for]='"inputIncomeSourceAmount" + i'>{{incomeSource.value.name}}</label>
-                    <div class="input-group input-group-joined" [class.is-valid]="incomeSource.valid" [class.is-invalid]="!incomeSource.valid">
-                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                        <input class="form-control py-4" [attr.id]='"inputIncomeSourceAmount" + i' [attr.data-cy]='"inputIncomeSourceAmount" + i' type="text" placeholder="Enter Income Amount" aria-describedby="amountHelp" formControlName="amount" />
-                    </div>
-                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("required")'>Amount is required.</div>
-                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("NaN")'>Amount not recognized as a number.</div></ng-container
-                >
-            </div></ng-container
-        >
-    </form>
-</div>
+<div class="row justify-content-around text-center mb-3"><h3 class="text-primary">Total Income: {{totalIncome | currency: 'USD' : 'symbol' : '1.0' }}</h3></div>
+<form [formGroup]="incomeForm">
+    <ng-container formArrayName="incomeSources"
+        ><div class="form-group" *ngFor="let incomeSource of incomeSources.controls; index as i">
+            <ng-container [formGroupName]="i"
+                ><ng-container [ngSwitch]="incomeSource.value.name"
+                    ><ng-container *ngSwitchCase="'SALARY'"
+                        ><sbpro-card [headerActions]="true"
+                            ><div class="card-header">
+                                {{incomeSource.value.name}}: {{incomeSource.value.total | currency: 'USD' : 'symbol' : '1.0'}}
+                                <div><i class="bi bi-x-circle pointer" (click)="removeIncomeSource(i)"></i></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="mb-1" [attr.for]='"inputIncomeSourceYearly" + i'>Salary</label>
+                                        <div class="input-group input-group-joined" [class.is-valid]="incomeSource.valid" [class.is-invalid]="!incomeSource.valid">
+                                            <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                                            <input class="form-control py-2" [attr.id]='"inputIncomeSourceYearly" + i' [attr.data-cy]='"inputIncomeSourceYearly" + i' type="text" placeholder="yearly" aria-describedby="yearlyHelp" formControlName="yearly" />
+                                        </div>
+                                        <div class="invalid-feedback" *ngIf='incomeSource.controls.yearly.touched &amp;&amp; incomeSource.controls.yearly.hasError("required")'>Amount is required.</div>
+                                        <div class="invalid-feedback" *ngIf='incomeSource.controls.yearly.hasError("NaN")'>Amount not recognized as a number.</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="mb-1" [attr.for]='"inputIncomeSourceBonus" + i'>Bonus</label>
+                                        <div class="input-group input-group-joined" [class.is-valid]="incomeSource.valid" [class.is-invalid]="!incomeSource.valid">
+                                            <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                                            <input class="form-control py-2" [attr.id]='"inputIncomeSourceBonus" + i' [attr.data-cy]='"inputIncomeSourceBonus" + i' type="text" placeholder="bonus" aria-describedby="bonusHelp" formControlName="bonus" />
+                                        </div>
+                                        <div class="invalid-feedback" *ngIf='incomeSource.controls.bonus.touched &amp;&amp; incomeSource.controls.bonus.hasError("required")'>Amount is required.</div>
+                                        <div class="invalid-feedback" *ngIf='incomeSource.controls.bonus.hasError("NaN")'>Amount not recognized as a number.</div>
+                                    </div>
+                                </div>
+                            </div></sbpro-card
+                        ></ng-container
+                    ><ng-container *ngSwitchCase="'HOURLY'"
+                        ><sbpro-card-navigation [navNames]='["Annual", "Calculate"]' [templates]="[overviewVerticalPill, exampleVerticalPill]" [headerActions]="true" navType="vertical"
+                            ><div class="card-header">
+                                {{incomeSource.value.name}}: {{incomeSource.value.amount | currency: 'USD' : 'symbol' : '1.0'}}
+                                <div><i class="bi bi-x-circle pointer" (click)="removeIncomeSource(i)"></i></div>
+                            </div>
+                            <ng-template #overviewVerticalPill
+                                ><h5 class="card-title">Vertical Pill Navigation Card</h5>
+                                <p class="card-text">The is a custom vertical pill navigation component.</p></ng-template
+                            ><ng-template #exampleVerticalPill
+                                ><h5 class="card-title">Example Pane</h5>
+                                <p class="card-text">This is an example of another tab pane that you could use within a card with navigation in the header.</p></ng-template
+                            ></sbpro-card-navigation
+                        ></ng-container
+                    ></ng-container
+                ></ng-container
+            >
+        </div></ng-container
+    >
+</form>

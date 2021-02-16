@@ -34,29 +34,53 @@ export class IncomeComponent implements OnInit, OnDestroy {
         this.subscription.add(
             this.incomeForm.valueChanges.subscribe((value) => {
                 console.log(value);
+
                 if (!value.incomeSources || value.incomeSources.length === 0) {
                     this.totalIncome = 0;
                 }
+
+                // Calculate all totals
+                (value.incomeSources as IncomeSource[]).forEach((incomeSource) => {
+                    incomeSource.total =
+                        this._getNumberValue(incomeSource.yearly) +
+                        this._getNumberValue(incomeSource.bonus);
+                });
+
+                // Calculate total total
                 this.totalIncome = (value.incomeSources as IncomeSource[]).reduce<number>(
                     (previous, current) => {
-                        if (typeof current.amount === 'number') {
-                            return previous + current.amount;
-                        }
-                        return parseInt((current.amount as string).replace(/[$,]/g, ''), 10);
+                        return previous + current.total;
                     },
                     0
                 );
             })
         );
     }
+    _getNumberValue(value: string | number | undefined): number {
+        if (!value) {
+            return 0;
+        }
+        if (typeof value === 'number') {
+            return value;
+        }
+        if (value === '') {
+            return 0;
+        }
+        return parseInt((value as string).replace(/[$,]/g, ''), 10);
+    }
     ngOnDestroy() {
         this.subscription.unsubscribe();
+    }
+    removeIncomeSource(index: number) {
+        this.incomeSources.removeAt(index);
     }
     addIncomeSource(incomeSource: IncomeSourceName) {
         this.incomeSources.push(
             this.fb.group({
                 name: [incomeSource, Validators.required],
-                amount: [0, [Validators.required, numberValidator()]],
+                yearly: ['', [Validators.required, numberValidator()]],
+                bonus: ['', [numberValidator()]],
+                total: [0, []],
             })
         );
         // this.store.dispatch(

@@ -33,43 +33,123 @@
         i.bi.bi-plus-circle
         .font-weight-700.d-inline-block &nbsp; Other
 
-.row.justify-content-left.mb-3
+.row.justify-content-around.text-center.mb-3
 
-    //- .card
-    //-     .card-body
-    h3 Total Income {{totalIncome}}
+    h3.text-primary Total Income: {{totalIncome | currency: 'USD' : 'symbol' : '1.0' }}
     
-.row.justify-content-left.mb-3
+form([formGroup]='incomeForm')
 
-    form([formGroup]='incomeForm')
-
-        ng-container(
-            formArrayName="incomeSources"
+    ng-container(
+        formArrayName="incomeSources"
+    )
+        .form-group(
+            *ngFor='let incomeSource of incomeSources.controls; index as i'
         )
-            .form-group(
-                *ngFor='let incomeSource of incomeSources.controls; index as i'
+            ng-container(
+                [formGroupName]="i"
             )
-                ng-container(
-                    [formGroupName]="i"
-                )
-                    label.small.mb-1(
-                        [attr.for]='"inputIncomeSourceAmount" + i'
-                    ) {{incomeSource.value.name}}
-                    .input-group.input-group-joined(
-                        [class.is-valid]='incomeSource.valid',
-                        [class.is-invalid]='!incomeSource.valid'
-                    )
-                        .input-group-prepend
-                            span.input-group-text $
-                        input.form-control.py-4(
-                            [attr.id]='"inputIncomeSourceAmount" + i',
-                            [attr.data-cy]='"inputIncomeSourceAmount" + i',
-                            type='text',
-                            placeholder='Enter Income Amount',
-                            aria-describedby='amountHelp',
-                            formControlName='amount'
+                ng-container([ngSwitch]='incomeSource.value.name')
+                    //- ng-container(*ngSwitchCase="incomeSource.value.name === 'SALARY' || incomeSource.value.name === 'HOURLY' ? incomeSource.value.name : ''")
+                    ng-container(*ngSwitchCase="'SALARY'")
+                        sbpro-card([headerActions]='true')
+                            .card-header
+                                | {{incomeSource.value.name}}: {{incomeSource.value.total | currency: 'USD' : 'symbol' : '1.0'}}
+                                div 
+                                    i.bi.bi-x-circle.pointer(
+                                        (click)='removeIncomeSource(i)'
+                                    )
+                            .card-body
+                                .row
+                                    .col-md-4
+                                        label.mb-1(
+                                            [attr.for]='"inputIncomeSourceYearly" + i'
+                                            ) Salary
+                                        .input-group.input-group-joined(
+                                            [class.is-valid]='incomeSource.valid',
+                                            [class.is-invalid]='!incomeSource.valid'
+                                        )
+                                            .input-group-prepend
+                                                span.input-group-text $
+                                            input.form-control.py-2(
+                                                [attr.id]='"inputIncomeSourceYearly" + i',
+                                                [attr.data-cy]='"inputIncomeSourceYearly" + i',
+                                                type='text',
+                                                placeholder='yearly',
+                                                aria-describedby='yearlyHelp',
+                                                formControlName='yearly'
+                                            )
+                                        .invalid-feedback(*ngIf='incomeSource.controls.yearly.touched && incomeSource.controls.yearly.hasError("required")')
+                                            | Amount is required.
+                                        .invalid-feedback(*ngIf='incomeSource.controls.yearly.hasError("NaN")')
+                                            | Amount not recognized as a number.
+                                    .col-md-4
+                                        label.mb-1(
+                                            [attr.for]='"inputIncomeSourceBonus" + i'
+                                            ) Bonus
+                                        .input-group.input-group-joined(
+                                            [class.is-valid]='incomeSource.valid',
+                                            [class.is-invalid]='!incomeSource.valid'
+                                        )
+                                            .input-group-prepend
+                                                span.input-group-text $
+                                            input.form-control.py-2(
+                                                [attr.id]='"inputIncomeSourceBonus" + i',
+                                                [attr.data-cy]='"inputIncomeSourceBonus" + i',
+                                                type='text',
+                                                placeholder='bonus',
+                                                aria-describedby='bonusHelp',
+                                                formControlName='bonus'
+                                            )
+                                        .invalid-feedback(*ngIf='incomeSource.controls.bonus.touched && incomeSource.controls.bonus.hasError("required")')
+                                            | Amount is required.
+                                        .invalid-feedback(*ngIf='incomeSource.controls.bonus.hasError("NaN")')
+                                            | Amount not recognized as a number.
+
+                    ng-container(*ngSwitchCase="'HOURLY'")
+
+                        sbpro-card-navigation(
+                            [navNames]='["Annual", "Calculate"]',
+                            [templates]='[overviewVerticalPill, exampleVerticalPill]',
+                            [headerActions]='true',
+                            navType='vertical'
                         )
-                    .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("required")')
-                        | Amount is required.
-                    .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("NaN")')
-                        | Amount not recognized as a number.
+                            .card-header
+                                | {{incomeSource.value.name}}: {{incomeSource.value.amount | currency: 'USD' : 'symbol' : '1.0'}}
+                                div 
+                                    i.bi.bi-x-circle.pointer(
+                                        (click)='removeIncomeSource(i)'
+                                    )
+
+                            ng-template(#overviewVerticalPill)
+                                h5.card-title Vertical Pill Navigation Card
+                                p.card-text.
+                                    The is a custom vertical pill navigation component.
+                            ng-template(#exampleVerticalPill)
+                                h5.card-title Example Pane
+                                p.card-text.
+                                    This is an example of another tab pane that you could use within a card with
+                                    navigation in the header.
+                        //- .col-md-4
+                        //-     .input-group.input-group-joined(
+                        //-         [class.is-valid]='incomeSource.valid',
+                        //-         [class.is-invalid]='!incomeSource.valid'
+                        //-     )
+                        //-         .input-group-prepend
+                        //-             span.input-group-text $
+                        //-         input.form-control.py-2(
+                        //-             [attr.id]='"inputIncomeSourceAmount" + i',
+                        //-             [attr.data-cy]='"inputIncomeSourceAmount" + i',
+                        //-             type='text',
+                        //-             placeholder='amount',
+                        //-             aria-describedby='amountHelp',
+                        //-             formControlName='amount'
+                        //-         )
+                        //-     .invalid-feedback(*ngIf='incomeSource.controls.amount.touched && incomeSource.controls.amount.hasError("required")')
+                        //-         | Amount is required.
+                        //-     .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("NaN")')
+                        //-         | Amount not recognized as a number.
+                                
+
+//-     label.small.mb-1(
+//-     [attr.for]='"inputIncomeSourceAmount" + i'
+//- ) {{incomeSource.value.name}} : {{incomeSource.value.amount | currency: 'USD' : 'symbol' : '1.0'}}
