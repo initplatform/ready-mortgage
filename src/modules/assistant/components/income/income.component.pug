@@ -9,35 +9,35 @@
         type='button',
         (click)='addIncomeSource("SALARY")'
     )
-        i.bi.bi-plus-circle.font-weight-700
+        i.bi.bi-plus-circle
         .font-weight-700.d-inline-block &nbsp; Annual Salary
     
     button.btn.btn-outline-primary.mb-4.btn-dynamic-block(
         type='button',
         (click)='addIncomeSource("HOURLY")'
     ) 
-        i.bi.bi-plus-circle.font-weight-700
+        i.bi.bi-plus-circle
         .font-weight-700.d-inline-block &nbsp; Hourly Wages
     
     button.btn.btn-outline-primary.mb-4.btn-dynamic-block(
         type='button',
         (click)='addIncomeSource("RENTAL")'
     ) 
-        i.bi.bi-plus-circle.font-weight-700
+        i.bi.bi-plus-circle
         .font-weight-700.d-inline-block &nbsp; Rental Property
     
     button.btn.btn-outline-primary.mb-4.btn-dynamic-block(
         type='button',
         (click)='addIncomeSource("OTHER")'
     ) 
-        i.bi.bi-plus-circle.font-weight-700
+        i.bi.bi-plus-circle
         .font-weight-700.d-inline-block &nbsp; Other
 
 .row.justify-content-left.mb-3
 
     //- .card
     //-     .card-body
-    h3 Total Income $xxx
+    h3 Total Income {{totalIncome}}
     
 .row.justify-content-left.mb-3
 
@@ -55,17 +55,21 @@
                     label.small.mb-1(
                         [attr.for]='"inputIncomeSourceAmount" + i'
                     ) {{incomeSource.value.name}}
-                    input.form-control.py-4(
-                        [attr.id]='"inputIncomeSourceAmount" + i',
-                        [attr.data-cy]='"inputIncomeSourceAmount" + i',
-                        type='text',
-                        placeholder='Enter Income Amount',
-                        aria-describedby='amountHelp',
-                        formControlName='amount',
+                    .input-group.input-group-joined(
                         [class.is-valid]='incomeSource.valid',
                         [class.is-invalid]='!incomeSource.valid'
                     )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-4(
+                            [attr.id]='"inputIncomeSourceAmount" + i',
+                            [attr.data-cy]='"inputIncomeSourceAmount" + i',
+                            type='text',
+                            placeholder='Enter Income Amount',
+                            aria-describedby='amountHelp',
+                            formControlName='amount'
+                        )
                     .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("required")')
-                        | Email required.
-                    .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("email")')
-                        | Email is not valid.
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='incomeSource.controls.amount.hasError("NaN")')
+                        | Amount not recognized as a number.

@@ -2,28 +2,32 @@
 <div class="row justify-content-center text-center mb-3"><h5>Click on an item below to add</h5></div>
 <div class="row justify-content-around text-center mb-4">
     <button class="btn btn-outline-primary mb-4 btn-dynamic-block" type="button" (click)='addIncomeSource("SALARY")'>
-        <i class="bi bi-plus-circle font-weight-700"></i>
+        <i class="bi bi-plus-circle"></i>
         <div class="font-weight-700 d-inline-block">&nbsp; Annual Salary</div></button
     ><button class="btn btn-outline-primary mb-4 btn-dynamic-block" type="button" (click)='addIncomeSource("HOURLY")'>
-        <i class="bi bi-plus-circle font-weight-700"></i>
+        <i class="bi bi-plus-circle"></i>
         <div class="font-weight-700 d-inline-block">&nbsp; Hourly Wages</div></button
     ><button class="btn btn-outline-primary mb-4 btn-dynamic-block" type="button" (click)='addIncomeSource("RENTAL")'>
-        <i class="bi bi-plus-circle font-weight-700"></i>
+        <i class="bi bi-plus-circle"></i>
         <div class="font-weight-700 d-inline-block">&nbsp; Rental Property</div></button
     ><button class="btn btn-outline-primary mb-4 btn-dynamic-block" type="button" (click)='addIncomeSource("OTHER")'>
-        <i class="bi bi-plus-circle font-weight-700"></i>
+        <i class="bi bi-plus-circle"></i>
         <div class="font-weight-700 d-inline-block">&nbsp; Other</div>
     </button>
 </div>
-<div class="row justify-content-left mb-3"><h3>Total Income $xxx</h3></div>
+<div class="row justify-content-left mb-3"><h3>Total Income {{totalIncome}}</h3></div>
 <div class="row justify-content-left mb-3">
     <form [formGroup]="incomeForm">
         <ng-container formArrayName="incomeSources"
             ><div class="form-group" *ngFor="let incomeSource of incomeSources.controls; index as i">
                 <ng-container [formGroupName]="i"
-                    ><label class="small mb-1" [attr.for]='"inputIncomeSourceAmount" + i'>{{incomeSource.value.name}}</label><input class="form-control py-4" [attr.id]='"inputIncomeSourceAmount" + i' [attr.data-cy]='"inputIncomeSourceAmount" + i' type="text" placeholder="Enter Income Amount" aria-describedby="amountHelp" formControlName="amount" [class.is-valid]="incomeSource.valid" [class.is-invalid]="!incomeSource.valid" />
-                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("required")'>Email required.</div>
-                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("email")'>Email is not valid.</div></ng-container
+                    ><label class="small mb-1" [attr.for]='"inputIncomeSourceAmount" + i'>{{incomeSource.value.name}}</label>
+                    <div class="input-group input-group-joined" [class.is-valid]="incomeSource.valid" [class.is-invalid]="!incomeSource.valid">
+                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                        <input class="form-control py-4" [attr.id]='"inputIncomeSourceAmount" + i' [attr.data-cy]='"inputIncomeSourceAmount" + i' type="text" placeholder="Enter Income Amount" aria-describedby="amountHelp" formControlName="amount" />
+                    </div>
+                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("required")'>Amount is required.</div>
+                    <div class="invalid-feedback" *ngIf='incomeSource.controls.amount.hasError("NaN")'>Amount not recognized as a number.</div></ng-container
                 >
             </div></ng-container
         >

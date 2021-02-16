@@ -70,5 +70,5 @@ export enum IncomeSourceOtherName {
 export interface IncomeSource {
     name: IncomeSourceName;
     otherIncome?: IncomeSourceOtherName;
-    annualIncome: number;
+    amount: number;
 }
