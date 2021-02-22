@@ -1,5 +1,13 @@
 import { formatCurrency } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +27,7 @@ export class RangeComponent implements OnInit, OnDestroy {
     @Input() spread!: number;
     @Input() maxValueIsCeiling = true;
     @Input() showPercent = false;
+    @Output() hasValue = new EventEmitter<boolean>();
 
     currentValue!: number;
 

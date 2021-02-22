@@ -1,25 +1,25 @@
 .row.justify-content-center.text-center.mb-5
-    h4(
-        *ngIf='!currency'
-    ) {{currentValue}}
-    h4(
-        *ngIf='currency && !spread'
-    ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}
-    h4(
-        *ngIf='currency && spread && currentValue != max'
-    ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}} - {{(currentValue | addStrings: spread) | currency: 'USD' : 'symbol' : '1.0'}}
-    h4(
-        *ngIf='currency && spread && currentValue == max && !maxValueIsCeiling'
-    ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}+
-    h4(
-        *ngIf='currency && spread && currentValue == max && maxValueIsCeiling'
-    ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}
-    h4.text-secondary(
-        *ngIf='showPercent && !originalMax'
-    ) &nbsp; ({{currentValue/max | percent}})  
-    h4.text-secondary(
-        *ngIf='showPercent && originalMax'
-    ) &nbsp; ({{currentValue/originalMax | percent : '1.1'}})  
+        h4(
+            *ngIf='!currency'
+        ) {{currentValue}}
+        h4(
+            *ngIf='currency && !spread'
+        ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}
+        h4(
+            *ngIf='currency && spread && currentValue != max'
+        ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}} - {{(currentValue | addStrings: spread) | currency: 'USD' : 'symbol' : '1.0'}}
+        h4(
+            *ngIf='currency && spread && currentValue == max && !maxValueIsCeiling'
+        ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}+
+        h4(
+            *ngIf='currency && spread && currentValue == max && maxValueIsCeiling'
+        ) {{currentValue | currency: 'USD' : 'symbol' : '1.0'}}
+        h4.text-secondary(
+            *ngIf='showPercent && !originalMax'
+        ) &nbsp; ({{currentValue/max | percent}})  
+        h4.text-secondary(
+            *ngIf='showPercent && originalMax'
+        ) &nbsp; ({{currentValue/originalMax | percent : '1.1'}})  
 form
     .form-group
         input.form-control-range#formControlRange(

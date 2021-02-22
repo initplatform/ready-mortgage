@@ -9,6 +9,7 @@
     ) Skip
     button.btn.btn-primary(
         *ngIf='!showSkip',
+        [ngClass]='{disabled: !continueEnabled}',
         (click)='_continue()',
         type="button"
     ) Continue

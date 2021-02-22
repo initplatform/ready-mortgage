@@ -17,6 +17,7 @@ import {
 export class NavigatorComponent implements OnInit {
     @Input() showSkip = false;
     @Input() showContinue = true;
+    @Input() continueEnabled = true;
     @Output() continue = new EventEmitter<void>();
     constructor(private location: Location) {}
     ngOnInit() {}
@@ -24,6 +25,9 @@ export class NavigatorComponent implements OnInit {
         this.location.back();
     }
     _continue() {
+        if (!this.continueEnabled) {
+            return;
+        }
         this.continue.emit();
     }
 }

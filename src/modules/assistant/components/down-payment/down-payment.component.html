@@ -1,2 +1,0 @@
-<div class="row justify-content-center text-center mb-5"><h3>How much have you saved for a down payment?</h3></div>
-<rdm-range #downPayment min="0" [max]="assistant.property.estimatedPurchasePrice * .3" [originalMax]="assistant.property.estimatedPurchasePrice" [initialValue]="assistant.buyer.downPayment || assistant.property.estimatedPurchasePrice * .1" step="1000" [currency]="true" [maxValueIsCeiling]="false" [showPercent]="true"></rdm-range><rdm-navigator (continue)="continue()"></rdm-navigator>
