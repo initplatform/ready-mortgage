@@ -1,1 +1,48 @@
-p income-rental
+form([formGroup]='incomeRentalForm')
+    sbpro-card([headerActions]='true')
+        .card-header
+            | Rental Property: {{total | currency: 'USD' : 'symbol' : '1.0'}}
+            div 
+                i.bi.bi-x-circle.pointer(
+                    (click)='_remove()'
+                )
+        .card-body
+            .row
+                .col-md-8
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceAddress" + index'
+                        ) Address (or Nickname)
+                    .input-group.input-group-joined(
+                        [class.is-valid]='addressControlValid',
+                        [class.is-invalid]='addressControlInvalid'
+                    )
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceAddress" + index',
+                            [attr.data-cy]='"inputIncomeSourceAddress" + index',
+                            type='text',
+                            placeholder='address',
+                            aria-describedby='addressHelp',
+                            formControlName='address'
+                        )
+                    .invalid-feedback(*ngIf='addressControl.hasError("required")')
+                        | Address is required.
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceAnnualRevenue" + index'
+                        ) AnnualRevenue
+                    .input-group.input-group-joined(
+                        [class.is-valid]='annualRevenueControlValid',
+                        [class.is-invalid]='annualRevenueControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceAnnualRevenue" + index',
+                            [attr.data-cy]='"inputIncomeSourceAnnualRevenue" + index',
+                            type='text',
+                            placeholder='annualRevenue',
+                            aria-describedby='annualRevenueHelp',
+                            formControlName='annualRevenue'
+                        )
+                    .invalid-feedback(*ngIf='annualRevenueControl.hasError("NaN")')
+                        | Amount not recognized as a number.

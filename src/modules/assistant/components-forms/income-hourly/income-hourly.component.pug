@@ -1,7 +1,7 @@
 form([formGroup]='incomeHourlyForm')
     sbpro-card([headerActions]='true')
         .card-header
-            | Hourly: {{total | currency: 'USD' : 'symbol' : '1.0-0'}}
+            | Hourly Wages: {{total | currency: 'USD' : 'symbol' : '1.0-0'}}
             div 
                 i.bi.bi-x-circle.pointer(
                     (click)='_remove()'

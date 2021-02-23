@@ -99,3 +99,9 @@ export interface IncomeHourlyFormValues {
     weeksPerYear: string | number;
 }
 export interface IncomeSourceHourly extends IncomeSourceBase, IncomeHourlyFormValues {}
+// Rental
+export interface IncomeRentalFormValues {
+    address: string;
+    annualRevenue: string | number;
+}
+export interface IncomeSourceRental extends IncomeSourceBase, IncomeRentalFormValues {}

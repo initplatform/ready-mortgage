@@ -31,7 +31,7 @@ form([formGroup]='incomeForm')
                 [formGroupName]="i"
             )
                 ng-container([ngSwitch]='incomeSource.value.name')
-                    //- ng-container(*ngSwitchCase="incomeSource.value.name === 'SALARY' || incomeSource.value.name === 'HOURLY' ? incomeSource.value.name : ''")
+
                     ng-container(*ngSwitchCase="'SALARY'")
                         rdm-income-salary(
                             [formControl]='incomeSource.controls.dynamicControl',
@@ -40,8 +40,14 @@ form([formGroup]='incomeForm')
                         )
 
                     ng-container(*ngSwitchCase="'HOURLY'")
-
                         rdm-income-hourly(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+
+                    ng-container(*ngSwitchCase="'RENTAL'")
+                        rdm-income-rental(
                             [formControl]='incomeSource.controls.dynamicControl',
                             [index]='i',
                             (remove)='removeIncomeSource($event)'
