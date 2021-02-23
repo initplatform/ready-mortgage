@@ -56,10 +56,6 @@ export enum IncomeSourceName {
     'SALARY' = 'SALARY',
     'HOURLY' = 'HOURLY',
     'RENTAL' = 'RENTAL',
-    'OTHER' = 'OTHER',
-}
-
-export enum IncomeSourceOtherName {
     'PENSION' = 'PENSION',
     'SOCIAL_SECURITY' = 'SOCIAL_SECURITY',
     'CHILD_SUPPORT' = 'CHILD_SUPPORT',
@@ -67,10 +63,39 @@ export enum IncomeSourceOtherName {
     'OTHER' = 'OTHER',
 }
 
+// export enum IncomeSourceOtherName {
+//     'PENSION' = 'PENSION',
+//     'SOCIAL_SECURITY' = 'SOCIAL_SECURITY',
+//     'CHILD_SUPPORT' = 'CHILD_SUPPORT',
+//     'ALIMONY' = 'ALIMONY',
+//     'OTHER' = 'OTHER',
+// }
+
+export interface IncomeSourceForm {
+    incomeSources: IncomeSource[];
+}
+
 export interface IncomeSource {
     name: IncomeSourceName;
-    otherIncome?: IncomeSourceOtherName;
-    yearly?: number;
-    bonus?: number;
-    total: number;
+    dynamicControl: IncomeSourceDynamicControl;
 }
+
+export type IncomeSourceDynamicControl = IncomeSourceSalary | IncomeSourceHourly | IncomeSourceBase;
+
+export interface IncomeSourceBase {
+    total: number;
+    debtToIncomeTotal: number;
+}
+// Salary
+export interface IncomeSalaryFormValues {
+    salary: string | number;
+    bonus?: string | number;
+}
+export interface IncomeSourceSalary extends IncomeSourceBase, IncomeSalaryFormValues {}
+// Hourly
+export interface IncomeHourlyFormValues {
+    hourlyRate: string | number;
+    hoursPerWeek: string | number;
+    weeksPerYear: string | number;
+}
+export interface IncomeSourceHourly extends IncomeSourceBase, IncomeHourlyFormValues {}

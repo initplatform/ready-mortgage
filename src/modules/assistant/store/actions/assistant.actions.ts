@@ -3,6 +3,7 @@ import {
     AssistantCreditEstimate,
     AssistantGoal,
     AssistantSearchStage,
+    IncomeSource,
     JourneyName,
 } from '@modules/assistant/models';
 import { createAction, props, union } from '@ngrx/store';
@@ -21,22 +22,29 @@ export const setJourney = createAction(
     '[Assistant] Set Journey',
     props<{ journey: JourneyName }>()
 );
-export const setGoal = createAction('[Assistant] Set Goal', props<{ goal: AssistantGoal }>());
+export const setGoal = createAction(
+    '[Assistant] Set Goal',
+    props<{ goal: AssistantGoal; nextStep: boolean }>()
+);
 export const setSearchStage = createAction(
     '[Assistant] Set Search Stage',
-    props<{ searchStage: AssistantSearchStage }>()
+    props<{ searchStage: AssistantSearchStage; nextStep: boolean }>()
 );
 export const setEstimatedPurchasePrice = createAction(
     '[Assistant] Set Estimated Purchase Price',
-    props<{ estimatedPurchasePrice: number }>()
+    props<{ estimatedPurchasePrice: number; nextStep: boolean }>()
 );
 export const setDownPayment = createAction(
     '[Assistant] Set Down Payment',
-    props<{ downPayment: number }>()
+    props<{ downPayment: number; nextStep: boolean }>()
 );
 export const setEstimatedCreditScore = createAction(
     '[Assistant] Set Estimated Credit Score',
-    props<{ estimatedCreditScore: AssistantCreditEstimate }>()
+    props<{ estimatedCreditScore: AssistantCreditEstimate; nextStep: boolean }>()
+);
+export const setIncomeSources = createAction(
+    '[Assistant] Set Income Sources',
+    props<{ incomeSources: IncomeSource[]; nextStep: boolean }>()
 );
 
 const all = union({
@@ -49,5 +57,6 @@ const all = union({
     setEstimatedPurchasePrice,
     setDownPayment,
     setEstimatedCreditScore,
+    setIncomeSources,
 });
 export type AllActions = typeof all;

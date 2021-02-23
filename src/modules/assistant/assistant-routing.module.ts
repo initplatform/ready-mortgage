@@ -11,6 +11,7 @@ import * as assistantContainers from './containers';
 
 /* Components */
 import * as assistantComponents from './components';
+import * as assistantComponentsSteps from './components-steps';
 
 /* Guards */
 import * as assistantGuards from './guards';
@@ -39,49 +40,49 @@ export const ROUTES: Routes = [
                 data: {
                     title: 'Stage - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.PurchaseStageComponent,
+                component: assistantComponentsSteps.PurchaseStageComponent,
             },
             {
                 path: 'remaining-mortgage',
                 data: {
                     title: 'Remaining - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.RemainingMortgageComponent,
+                component: assistantComponentsSteps.RemainingMortgageComponent,
             },
             {
                 path: 'known-home-price',
                 data: {
                     title: 'Home Price - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.KnownHomePriceComponent,
+                component: assistantComponentsSteps.KnownHomePriceComponent,
             },
             {
                 path: 'down-payment',
                 data: {
                     title: 'Down Payment - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.DownPaymentComponent,
+                component: assistantComponentsSteps.DownPaymentComponent,
             },
             {
                 path: 'credit-score',
                 data: {
                     title: 'Credit Score - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.CreditScoreComponent,
+                component: assistantComponentsSteps.CreditScoreComponent,
             },
             {
                 path: 'income',
                 data: {
                     title: 'Income - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.IncomeComponent,
+                component: assistantComponentsSteps.IncomeComponent,
             },
             {
                 path: 'debt',
                 data: {
                     title: 'Debt - Ready Mortgage',
                 } as SBRouteData,
-                component: assistantComponents.DebtComponent,
+                component: assistantComponentsSteps.DebtComponent,
             },
             {
                 path: '**',

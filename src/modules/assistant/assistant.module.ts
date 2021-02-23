@@ -12,6 +12,8 @@ import { NavigationModule } from '@modules/navigation/navigation.module';
 
 /* Components */
 import * as assistantComponents from './components';
+import * as assistantComponentsForms from './components-forms';
+import * as assistantComponentsSteps from './components-steps';
 
 /* Containers */
 import * as assistantContainers from './containers';
@@ -40,7 +42,17 @@ import * as assistantStore from './store';
         EffectsModule.forFeature([assistantStore.AssistantEffects]),
     ],
     providers: [...assistantServices.services, ...assistantGuards.guards],
-    declarations: [...assistantContainers.containers, ...assistantComponents.components],
-    exports: [...assistantContainers.containers, ...assistantComponents.components],
+    declarations: [
+        ...assistantContainers.containers,
+        ...assistantComponents.components,
+        ...assistantComponentsForms.componentsForms,
+        ...assistantComponentsSteps.componentsSteps,
+    ],
+    exports: [
+        ...assistantContainers.containers,
+        ...assistantComponents.components,
+        ...assistantComponentsForms.componentsForms,
+        ...assistantComponentsSteps.componentsSteps,
+    ],
 })
 export class AssistantModule {}

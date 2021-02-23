@@ -41,7 +41,8 @@ export class AssistantEffects {
                     assistantActions.setSearchStage,
                     assistantActions.setEstimatedPurchasePrice,
                     assistantActions.setDownPayment,
-                    assistantActions.setEstimatedCreditScore
+                    assistantActions.setEstimatedCreditScore,
+                    assistantActions.setIncomeSources
                 ),
                 concatMap((action) =>
                     of(action).pipe(
@@ -51,7 +52,9 @@ export class AssistantEffects {
                 switchMap(([action, assistant]) => {
                     return from(this.indexedDBService.putAssistant(assistant)).pipe(
                         map(() => {
-                            this.journeyService.goToNextStep(assistant);
+                            if (action.nextStep) {
+                                this.journeyService.goToNextStep(assistant);
+                            }
                         })
                     );
                 })

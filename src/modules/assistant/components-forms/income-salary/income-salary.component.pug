@@ -1,0 +1,52 @@
+form([formGroup]='incomeSalaryForm')
+    sbpro-card([headerActions]='true')
+        .card-header
+            | Salary: {{total | currency: 'USD' : 'symbol' : '1.0'}}
+            div 
+                i.bi.bi-x-circle.pointer(
+                    (click)='_remove()'
+                )
+        .card-body
+            .row
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceSalary" + index'
+                        ) Salary
+                    .input-group.input-group-joined(
+                        [class.is-valid]='salaryControlValid',
+                        [class.is-invalid]='salaryControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceSalary" + index',
+                            [attr.data-cy]='"inputIncomeSourceSalary" + index',
+                            type='text',
+                            placeholder='salary',
+                            aria-describedby='salaryHelp',
+                            formControlName='salary'
+                        )
+                    .invalid-feedback(*ngIf='salaryControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='salaryControl.hasError("NaN")')
+                        | Amount not recognized as a number.
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceBonus" + index'
+                        ) Bonus
+                    .input-group.input-group-joined(
+                        [class.is-valid]='bonusControlValid',
+                        [class.is-invalid]='bonusControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceBonus" + index',
+                            [attr.data-cy]='"inputIncomeSourceBonus" + index',
+                            type='text',
+                            placeholder='bonus',
+                            aria-describedby='bonusHelp',
+                            formControlName='bonus'
+                        )
+                    .invalid-feedback(*ngIf='bonusControl.hasError("NaN")')
+                        | Amount not recognized as a number.

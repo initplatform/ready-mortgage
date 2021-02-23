@@ -1,0 +1,76 @@
+form([formGroup]='incomeHourlyForm')
+    sbpro-card([headerActions]='true')
+        .card-header
+            | Hourly: {{total | currency: 'USD' : 'symbol' : '1.0-0'}}
+            div 
+                i.bi.bi-x-circle.pointer(
+                    (click)='_remove()'
+                )
+        .card-body
+            .row
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceHourlyRate" + index'
+                        ) Hourly Rate
+                    .input-group.input-group-joined(
+                        [class.is-valid]='hourlyRateControlValid',
+                        [class.is-invalid]='hourlyRateControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceHourlyRate" + index',
+                            [attr.data-cy]='"inputIncomeSourceHourlyRate" + index',
+                            type='text',
+                            placeholder='hourlyRate',
+                            aria-describedby='hourlyRateHelp',
+                            formControlName='hourlyRate'
+                        )
+                    .invalid-feedback(*ngIf='hourlyRateControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='hourlyRateControl.hasError("NaN")')
+                        | Amount not recognized as a number.
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceHoursPerWeek" + index'
+                        ) Hours Per Week
+                    .input-group.input-group-joined(
+                        [class.is-valid]='hoursPerWeekControlValid',
+                        [class.is-invalid]='hoursPerWeekControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceHoursPerWeek" + index',
+                            [attr.data-cy]='"inputIncomeSourceHoursPerWeek" + index',
+                            type='text',
+                            placeholder='hoursPerWeek',
+                            aria-describedby='hoursPerWeekHelp',
+                            formControlName='hoursPerWeek'
+                        )
+                    .invalid-feedback(*ngIf='hoursPerWeekControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='hoursPerWeekControl.hasError("NaN")')
+                        | Amount not recognized as a number.
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceWeeksPerYear" + index'
+                        ) Weeks Per Year
+                    .input-group.input-group-joined(
+                        [class.is-valid]='weeksPerYearControlValid',
+                        [class.is-invalid]='weeksPerYearControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceWeeksPerYear" + index',
+                            [attr.data-cy]='"inputIncomeSourceWeeksPerYear" + index',
+                            type='text',
+                            placeholder='weeksPerYear',
+                            aria-describedby='weeksPerYearHelp',
+                            formControlName='weeksPerYear'
+                        )
+                    .invalid-feedback(*ngIf='weeksPerYearControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='weeksPerYearControl.hasError("NaN")')
+                        | Amount not recognized as a number.

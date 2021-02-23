@@ -16,3 +16,19 @@ export const numberValidator = (): ValidatorFn => {
         return { NaN: true };
     };
 };
+
+export const getNumberValue = (value: string | number | undefined): number => {
+    if (!value) {
+        return 0;
+    }
+    if (typeof value === 'number') {
+        return value;
+    }
+    if (value === '') {
+        return 0;
+    }
+    if ((value as string).match(/\./)) {
+        return parseFloat((value as string).replace(/[$,]/g, ''));
+    }
+    return parseInt((value as string).replace(/[$,]/g, ''), 10);
+};

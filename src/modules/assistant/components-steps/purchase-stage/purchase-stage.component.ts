@@ -19,7 +19,10 @@ export class PurchaseStageComponent implements OnInit {
             assistantActions.setJourney({ journey: JourneyName.PURCHASE_HOME_KNOWN })
         );
         this.store.dispatch(
-            assistantActions.setSearchStage({ searchStage: AssistantSearchStage.HOME_KNOWN })
+            assistantActions.setSearchStage({
+                searchStage: AssistantSearchStage.HOME_KNOWN,
+                nextStep: true,
+            })
         );
     }
     homeShopping() {
@@ -27,7 +30,10 @@ export class PurchaseStageComponent implements OnInit {
             assistantActions.setJourney({ journey: JourneyName.PURCHASE_HOME_SHOPPING })
         );
         this.store.dispatch(
-            assistantActions.setSearchStage({ searchStage: AssistantSearchStage.HOME_SHOPPING })
+            assistantActions.setSearchStage({
+                searchStage: AssistantSearchStage.HOME_SHOPPING,
+                nextStep: true,
+            })
         );
     }
     research() {
@@ -35,7 +41,10 @@ export class PurchaseStageComponent implements OnInit {
             assistantActions.setJourney({ journey: JourneyName.PURCHASE_RESEARCH })
         );
         this.store.dispatch(
-            assistantActions.setSearchStage({ searchStage: AssistantSearchStage.RESEARCH })
+            assistantActions.setSearchStage({
+                searchStage: AssistantSearchStage.RESEARCH,
+                nextStep: true,
+            })
         );
     }
 }

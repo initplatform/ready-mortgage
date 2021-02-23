@@ -66,5 +66,12 @@ export const assistantReducer = createImmerReducer(
         }
         state.assistant.buyer.estimatedCreditScore = estimatedCreditScore;
         return state;
+    }),
+    on(assistantActions.setIncomeSources, (state, { incomeSources }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.buyer.incomeSources = incomeSources;
+        return state;
     })
 );

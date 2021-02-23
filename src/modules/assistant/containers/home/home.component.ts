@@ -15,9 +15,13 @@ export class HomeComponent implements OnInit {
         this.store.dispatch(assistantActions.setJourney({ journey: JourneyName.GETTING_STARTED }));
     }
     purchase() {
-        this.store.dispatch(assistantActions.setGoal({ goal: AssistantGoal.PURCHASE }));
+        this.store.dispatch(
+            assistantActions.setGoal({ goal: AssistantGoal.PURCHASE, nextStep: true })
+        );
     }
     refinance() {
-        this.store.dispatch(assistantActions.setGoal({ goal: AssistantGoal.REFINANCE }));
+        this.store.dispatch(
+            assistantActions.setGoal({ goal: AssistantGoal.REFINANCE, nextStep: true })
+        );
     }
 }

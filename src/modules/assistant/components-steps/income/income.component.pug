@@ -1,0 +1,71 @@
+.row.justify-content-center.text-center.mb-3
+    h3 What is your annual income before taxes?
+
+.row.justify-content-around.text-center.mb-3
+    h2.text-primary Total Income: {{totalIncome | currency: 'USD' : 'symbol' : '1.0-0' }}
+
+.row.justify-content-center.text-center.mb-3
+    h5 Click on an item below to add
+
+.row.justify-content-around.text-center.mb-4
+
+    .col-6.col-md-3(
+        *ngFor='let incomeSourceName of incomeSourceNames'
+    )
+        button.btn.btn-outline-primary.mb-4.btn-block(
+            type='button',
+            (click)='addIncomeSource(incomeSourceName.name)'
+        )
+            i.bi.bi-plus-circle.d-none.d-sm-inline-block.mr-2
+            .font-weight-700.d-inline-block {{incomeSourceName.displayName}}
+        
+form([formGroup]='incomeForm')
+
+    ng-container(
+        formArrayName="incomeSources"
+    )
+        .form-group(
+            *ngFor='let incomeSource of incomeSources.controls; index as i'
+        )
+            ng-container(
+                [formGroupName]="i"
+            )
+                ng-container([ngSwitch]='incomeSource.value.name')
+                    //- ng-container(*ngSwitchCase="incomeSource.value.name === 'SALARY' || incomeSource.value.name === 'HOURLY' ? incomeSource.value.name : ''")
+                    ng-container(*ngSwitchCase="'SALARY'")
+                        rdm-income-salary(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+
+                    ng-container(*ngSwitchCase="'HOURLY'")
+
+                        rdm-income-hourly(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+
+                        //- sbpro-card-navigation(
+                        //-     [navNames]='["Annual", "Calculate"]',
+                        //-     [templates]='[overviewVerticalPill, exampleVerticalPill]',
+                        //-     [headerActions]='true',
+                        //-     navType='vertical'
+                        //- )
+                        //-     .card-header
+                        //-         | {{incomeSource.value.name}}: {{incomeSource.value.amount | currency: 'USD' : 'symbol' : '1.0'}}
+                        //-         div 
+                        //-             i.bi.bi-x-circle.pointer(
+                        //-                 (click)='removeIncomeSource(i)'
+                        //-             )
+
+                        //-     ng-template(#overviewVerticalPill)
+                        //-         h5.card-title Vertical Pill Navigation Card
+                        //-         p.card-text.
+                        //-             The is a custom vertical pill navigation component.
+                        //-     ng-template(#exampleVerticalPill)
+                        //-         h5.card-title Example Pane
+                        //-         p.card-text.
+                        //-             This is an example of another tab pane that you could use within a card with
+                        //-             navigation in the header.

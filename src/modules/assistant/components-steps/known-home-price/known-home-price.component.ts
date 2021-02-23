@@ -33,6 +33,7 @@ export class KnownHomePriceComponent implements OnInit, OnDestroy {
         this.store.dispatch(
             assistantActions.setEstimatedPurchasePrice({
                 estimatedPurchasePrice: this.homePrice.currentValue,
+                nextStep: true,
             })
         );
     }

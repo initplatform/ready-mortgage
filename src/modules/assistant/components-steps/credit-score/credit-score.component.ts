@@ -1,18 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { RangeComponent } from '@modules/assistant/components/range/range.component';
-import { Assistant } from '@modules/assistant/models';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Assistant, AssistantCreditEstimate } from '@modules/assistant/models';
 import { assistantActions, assistantSelectors } from '@modules/assistant/store';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'rdm-down-payment',
+    selector: 'rdm-credit-score',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './down-payment.component.html',
-    styleUrls: ['down-payment.component.scss'],
+    templateUrl: './credit-score.component.html',
+    styleUrls: ['credit-score.component.scss'],
 })
-export class DownPaymentComponent implements OnInit, OnDestroy {
-    @ViewChild('downPayment') downPayment!: RangeComponent;
+export class CreditScoreComponent implements OnInit, OnDestroy {
     subscription: Subscription = new Subscription();
 
     assistant!: Assistant;
@@ -29,10 +27,11 @@ export class DownPaymentComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-    continue() {
+    estimatedCreditScore(score: AssistantCreditEstimate) {
         this.store.dispatch(
-            assistantActions.setDownPayment({
-                downPayment: this.downPayment.currentValue,
+            assistantActions.setEstimatedCreditScore({
+                estimatedCreditScore: score,
+                nextStep: true,
             })
         );
     }
