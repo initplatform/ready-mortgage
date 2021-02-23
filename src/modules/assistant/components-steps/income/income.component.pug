@@ -18,7 +18,12 @@
         )
             i.bi.bi-plus-circle.d-none.d-sm-inline-block.mr-2
             .font-weight-700.d-inline-block {{incomeSourceName.displayName}}
-        
+
+
+rdm-navigator.mb-4(
+    (continue)='continue()'
+)
+
 form([formGroup]='incomeForm')
 
     ng-container(
@@ -38,16 +43,44 @@ form([formGroup]='incomeForm')
                             [index]='i',
                             (remove)='removeIncomeSource($event)'
                         )
-
                     ng-container(*ngSwitchCase="'HOURLY'")
                         rdm-income-hourly(
                             [formControl]='incomeSource.controls.dynamicControl',
                             [index]='i',
                             (remove)='removeIncomeSource($event)'
                         )
-
                     ng-container(*ngSwitchCase="'RENTAL'")
                         rdm-income-rental(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+                    ng-container(*ngSwitchCase="'PENSION'")
+                        rdm-income-pension(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+                    ng-container(*ngSwitchCase="'SOCIAL_SECURITY'")
+                        rdm-income-social-security(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+                    ng-container(*ngSwitchCase="'CHILD_SUPPORT'")
+                        rdm-income-child-support(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+                    ng-container(*ngSwitchCase="'ALIMONY'")
+                        rdm-income-alimony(
+                            [formControl]='incomeSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeIncomeSource($event)'
+                        )
+                    ng-container(*ngSwitchCase="'OTHER'")
+                        rdm-income-other(
                             [formControl]='incomeSource.controls.dynamicControl',
                             [index]='i',
                             (remove)='removeIncomeSource($event)'

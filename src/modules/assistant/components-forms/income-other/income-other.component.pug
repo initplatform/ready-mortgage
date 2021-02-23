@@ -1,0 +1,50 @@
+form([formGroup]='incomeOtherForm')
+    sbpro-card([headerActions]='true')
+        .card-header
+            | Other: {{total | currency: 'USD' : 'symbol' : '1.0'}}
+            div 
+                i.bi.bi-x-circle.pointer(
+                    (click)='_remove()'
+                )
+        .card-body
+            .row
+                .col-md-8
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceDescription" + index'
+                        ) Description
+                    .input-group.input-group-joined(
+                        [class.is-valid]='descriptionControlValid',
+                        [class.is-invalid]='descriptionControlInvalid'
+                    )
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceDescription" + index',
+                            [attr.data-cy]='"inputIncomeSourceDescription" + index',
+                            type='text',
+                            placeholder='description',
+                            aria-describedby='descriptionHelp',
+                            formControlName='description'
+                        )
+                    .invalid-feedback(*ngIf='descriptionControl.hasError("required")')
+                        | Description is required.
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceAnnualAmount" + index'
+                        ) Annual Amount
+                    .input-group.input-group-joined(
+                        [class.is-valid]='annualAmountControlValid',
+                        [class.is-invalid]='annualAmountControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceAnnualAmount" + index',
+                            [attr.data-cy]='"inputIncomeSourceAnnualAmount" + index',
+                            type='text',
+                            placeholder='annualAmount',
+                            aria-describedby='annualAmountHelp',
+                            formControlName='annualAmount'
+                        )
+                    .invalid-feedback(*ngIf='annualAmountControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='annualAmountControl.hasError("NaN")')
+                        | Amount not recognized as a number.

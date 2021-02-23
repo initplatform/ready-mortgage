@@ -12,6 +12,7 @@ import { JourneyService } from '@modules/assistant/services';
 import { assistantSelectors } from '@modules/assistant/store';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { distinctUntilKeyChanged } from 'rxjs/operators';
 
 interface Steps {
     name: string;
@@ -41,10 +42,13 @@ export class StepsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription.add(
-            this.store.select(assistantSelectors.selectAssistant).subscribe((assistant) => {
-                this.assistant = assistant;
-                this._determineSteps();
-            })
+            this.store
+                .select(assistantSelectors.selectAssistant)
+                .pipe(distinctUntilKeyChanged('journey'))
+                .subscribe((assistant) => {
+                    this.assistant = assistant;
+                    this._determineSteps();
+                })
         );
         this.subscription.add(
             this.journeyService.currentPath$.subscribe((currentPath) => {

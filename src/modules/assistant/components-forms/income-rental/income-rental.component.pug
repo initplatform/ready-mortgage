@@ -29,7 +29,7 @@ form([formGroup]='incomeRentalForm')
                 .col-md-4
                     label.mb-1(
                         [attr.for]='"inputIncomeSourceAnnualRevenue" + index'
-                        ) AnnualRevenue
+                        ) Annual Revenue
                     .input-group.input-group-joined(
                         [class.is-valid]='annualRevenueControlValid',
                         [class.is-invalid]='annualRevenueControlInvalid'
@@ -44,5 +44,7 @@ form([formGroup]='incomeRentalForm')
                             aria-describedby='annualRevenueHelp',
                             formControlName='annualRevenue'
                         )
+                    .invalid-feedback(*ngIf='annualRevenueControl.hasError("required")')
+                        | Amount is required.
                     .invalid-feedback(*ngIf='annualRevenueControl.hasError("NaN")')
                         | Amount not recognized as a number.

@@ -6,8 +6,8 @@ import {
     IncomeSourceDynamicControl,
     IncomeSourceForm,
     IncomeSourceName,
-    IncomeSourceSalary,
 } from '@modules/assistant/models';
+import { JourneyService } from '@modules/assistant/services';
 import { assistantActions, assistantSelectors } from '@modules/assistant/store';
 import { Store } from '@ngrx/store';
 import debounce from 'just-debounce';
@@ -47,7 +47,11 @@ export class IncomeComponent implements OnInit, OnDestroy {
             })
         );
     }, 500);
-    constructor(private store: Store, private fb: FormBuilder) {}
+    constructor(
+        private store: Store,
+        private fb: FormBuilder,
+        private journeyService: JourneyService
+    ) {}
 
     ngOnInit() {
         this.store
@@ -56,16 +60,16 @@ export class IncomeComponent implements OnInit, OnDestroy {
             .subscribe((assistant) => {
                 this.assistant = assistant;
                 if (this.assistant.buyer.incomeSources.length > 0) {
-                    this.assistant.buyer.incomeSources.forEach((incomeSource) => {
+                    this.assistant.buyer.incomeSources.reduceRight<null>((_, incomeSource) => {
                         this.addIncomeSource(incomeSource.name, incomeSource.dynamicControl);
-                    });
+                        return null;
+                    }, null);
                     this._setTotalIncome(this.assistant.buyer.incomeSources);
                 }
             });
 
         this.subscription.add(
             this.incomeForm.valueChanges.subscribe((value: IncomeSourceForm) => {
-                console.log(value);
                 // Calculate total total
                 this._setTotalIncome(value.incomeSources);
                 this.dispatch(value.incomeSources);
@@ -87,7 +91,8 @@ export class IncomeComponent implements OnInit, OnDestroy {
         if (!dynamicControl) {
             dynamicControl = { total: 0, debtToIncomeTotal: 0 };
         }
-        this.incomeSources.push(
+        this.incomeSources.insert(
+            0,
             this.fb.group({
                 name: [incomeSource, Validators.required],
                 dynamicControl: [dynamicControl, []],
@@ -97,5 +102,9 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
     get incomeSources() {
         return this.incomeForm.get('incomeSources') as FormArray;
+    }
+
+    continue() {
+        this.journeyService.goToNextStep(this.assistant);
     }
 }

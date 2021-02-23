@@ -63,14 +63,6 @@ export enum IncomeSourceName {
     'OTHER' = 'OTHER',
 }
 
-// export enum IncomeSourceOtherName {
-//     'PENSION' = 'PENSION',
-//     'SOCIAL_SECURITY' = 'SOCIAL_SECURITY',
-//     'CHILD_SUPPORT' = 'CHILD_SUPPORT',
-//     'ALIMONY' = 'ALIMONY',
-//     'OTHER' = 'OTHER',
-// }
-
 export interface IncomeSourceForm {
     incomeSources: IncomeSource[];
 }
@@ -105,3 +97,31 @@ export interface IncomeRentalFormValues {
     annualRevenue: string | number;
 }
 export interface IncomeSourceRental extends IncomeSourceBase, IncomeRentalFormValues {}
+// Pension
+export interface IncomePensionFormValues {
+    monthlyAmount: string | number;
+}
+export interface IncomeSourcePension extends IncomeSourceBase, IncomePensionFormValues {}
+// Social Security
+export interface IncomeSocialSecurityFormValues {
+    monthlyAmount: string | number;
+}
+export interface IncomeSourceSocialSecurity
+    extends IncomeSourceBase,
+        IncomeSocialSecurityFormValues {}
+// Child Support
+export interface IncomeChildSupportFormValues {
+    monthlyAmount: string | number;
+}
+export interface IncomeSourceChildSupport extends IncomeSourceBase, IncomeChildSupportFormValues {}
+// Alimony
+export interface IncomeAlimonyFormValues {
+    monthlyAmount: string | number;
+}
+export interface IncomeSourceAlimony extends IncomeSourceBase, IncomeAlimonyFormValues {}
+// Other
+export interface IncomeOtherFormValues {
+    description: string;
+    annualAmount: string | number;
+}
+export interface IncomeSourceOther extends IncomeSourceBase, IncomeOtherFormValues {}

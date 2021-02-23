@@ -1,0 +1,32 @@
+form([formGroup]='incomePensionForm')
+    sbpro-card([headerActions]='true')
+        .card-header
+            | Pension: {{total | currency: 'USD' : 'symbol' : '1.0'}}
+            div 
+                i.bi.bi-x-circle.pointer(
+                    (click)='_remove()'
+                )
+        .card-body
+            .row
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputIncomeSourceMonthlyAmount" + index'
+                        ) Monthly Amount
+                    .input-group.input-group-joined(
+                        [class.is-valid]='monthlyAmountControlValid',
+                        [class.is-invalid]='monthlyAmountControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputIncomeSourceMonthlyAmount" + index',
+                            [attr.data-cy]='"inputIncomeSourceMonthlyAmount" + index',
+                            type='text',
+                            placeholder='monthlyAmount',
+                            aria-describedby='monthlyAmountHelp',
+                            formControlName='monthlyAmount'
+                        )
+                    .invalid-feedback(*ngIf='monthlyAmountControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='monthlyAmountControl.hasError("NaN")')
+                        | Amount not recognized as a number.
