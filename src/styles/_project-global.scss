@@ -96,3 +96,9 @@ rdm-steps {
           width: 100%;
     }      
 }
+
+sbpro-card-collapsable {
+    .card {
+        box-shadow: 0 0.15rem .5rem 0 rgb(33 40 50 / 15%)
+    }
+}

@@ -6,6 +6,7 @@ import {
     IncomeSourceDynamicControl,
     IncomeSourceForm,
     IncomeSourceName,
+    incomeSourceNames,
 } from '@modules/assistant/models';
 import { JourneyService } from '@modules/assistant/services';
 import { assistantActions, assistantSelectors } from '@modules/assistant/store';
@@ -25,16 +26,7 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
     assistant!: Assistant;
     totalIncome!: number;
-    incomeSourceNames = [
-        { name: IncomeSourceName.SALARY, displayName: 'Annual Salary' },
-        { name: IncomeSourceName.HOURLY, displayName: 'Hourly Wages' },
-        { name: IncomeSourceName.RENTAL, displayName: 'Rental Property' },
-        { name: IncomeSourceName.PENSION, displayName: 'Pension' },
-        { name: IncomeSourceName.SOCIAL_SECURITY, displayName: 'Social Security' },
-        { name: IncomeSourceName.CHILD_SUPPORT, displayName: 'Child Support' },
-        { name: IncomeSourceName.ALIMONY, displayName: 'Alimony' },
-        { name: IncomeSourceName.OTHER, displayName: 'Other' },
-    ];
+    incomeSourceNames = incomeSourceNames;
     incomeForm = this.fb.group({
         incomeSources: new FormArray([]),
     });

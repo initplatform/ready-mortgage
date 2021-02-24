@@ -1,1 +1,20 @@
-p debt
+.row.justify-content-center.text-center.mb-3
+    h3 What is your monthly debt?
+
+.row.justify-content-around.text-center.mb-3
+    h2.text-primary Monthly Debt: {{totalDebt | currency: 'USD' : 'symbol' : '1.0-0' }}
+
+.row.justify-content-center.text-center.mb-3
+    h5 Click on an item below to add
+
+.row.justify-content-around.text-center.mb-4
+
+    .col-6.col-md-3(
+        *ngFor='let debtSourceName of debtSourceNames'
+    )
+        button.btn.btn-outline-primary.mb-4.btn-block(
+            type='button',
+            (click)='addIncomeSource(debtSourceName.name)'
+        )
+            i.bi.bi-plus-circle.d-none.d-sm-inline-block.mr-2
+            .font-weight-700.d-inline-block {{debtSourceName.displayName}}

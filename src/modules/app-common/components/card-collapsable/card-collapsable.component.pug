@@ -1,4 +1,4 @@
-.card.sb-card-collapsable.mb-4(
+.card.card-collapsable.mb-4(
     [ngClass]='cardClasses'
 )
     a.card-header(
@@ -8,8 +8,8 @@
         role='button',
         [attr.aria-expanded]='!collapsed'
     ) {{headerText}}
-        .sb-card-collapsable-arrow
-            fa-icon.mr-1([icon]='["fas", "chevron-down"]')
+        .card-collapsable-arrow
+            i.bi.bi-chevron-down.mr-1
     .collapse.show(
         #collapsibleSection
     )

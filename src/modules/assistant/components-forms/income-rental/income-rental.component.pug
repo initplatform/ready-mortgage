@@ -1,11 +1,5 @@
 form([formGroup]='incomeRentalForm')
-    sbpro-card([headerActions]='true')
-        .card-header
-            | Rental Property: {{total | currency: 'USD' : 'symbol' : '1.0'}}
-            div 
-                i.bi.bi-x-circle.pointer(
-                    (click)='_remove()'
-                )
+    sbpro-card-collapsable(headerText='Rental Property: {{total | currency: "USD" : "symbol" : "1.0"}}')
         .card-body
             .row
                 .col-md-8
@@ -48,3 +42,9 @@ form([formGroup]='incomeRentalForm')
                         | Amount is required.
                     .invalid-feedback(*ngIf='annualRevenueControl.hasError("NaN")')
                         | Amount not recognized as a number.
+        .card-footer.d-flex
+            p.mr-auto TODO: DESCRIPTION
+            .d-flex.align-items-end.flex-column
+                i.bi.bi-trash.mt-auto.pointer(
+                    (click)='_remove()'
+                )

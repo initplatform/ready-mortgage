@@ -38,7 +38,7 @@ export class IncomeRentalComponent implements AfterViewInit, OnDestroy, ControlV
     onChange!: (incomeSourceRental: IncomeRentalFormValues) => void;
     total = 0;
     incomeRentalForm = this.fb.group({
-        address: [undefined, [Validators.required]],
+        address: [undefined],
         annualRevenue: [undefined, [Validators.required, numberValidator()]],
     });
 

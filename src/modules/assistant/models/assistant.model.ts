@@ -1,6 +1,8 @@
 import { v4 as uuid } from 'uuid';
 
+import { BuyerDetails } from './buyer.model';
 import { JourneyName } from './journey.model';
+import { PropertyDetails } from './property.model';
 
 export interface AssistantState {
     assistant: Assistant | null;
@@ -11,14 +13,6 @@ export interface AssistantState {
 export enum AssistantGoal {
     'PURCHASE' = 'PURCHASE',
     'REFINANCE' = 'REFINANCE',
-}
-
-export enum AssistantCreditEstimate {
-    'BAD' = 'BAD',
-    'POOR' = 'POOR',
-    'FAIR' = 'FAIR',
-    'GOOD' = 'GOOD',
-    'EXCELLENT' = 'EXCELLENT',
 }
 
 export enum AssistantSearchStage {
@@ -35,93 +29,3 @@ export class Assistant {
     property: PropertyDetails = new PropertyDetails();
     buyer: BuyerDetails = new BuyerDetails();
 }
-
-export class PropertyDetails {
-    zipCode!: string;
-    estimatedPurchasePrice!: number;
-}
-
-export class BuyerDetails {
-    firstName!: string;
-    lastName!: string;
-    phone!: string;
-    email!: string;
-    downPayment!: number;
-    estimatedCreditScore!: AssistantCreditEstimate;
-    workingWithAgent!: boolean;
-    incomeSources: IncomeSource[] = [];
-}
-
-export enum IncomeSourceName {
-    'SALARY' = 'SALARY',
-    'HOURLY' = 'HOURLY',
-    'RENTAL' = 'RENTAL',
-    'PENSION' = 'PENSION',
-    'SOCIAL_SECURITY' = 'SOCIAL_SECURITY',
-    'CHILD_SUPPORT' = 'CHILD_SUPPORT',
-    'ALIMONY' = 'ALIMONY',
-    'OTHER' = 'OTHER',
-}
-
-export interface IncomeSourceForm {
-    incomeSources: IncomeSource[];
-}
-
-export interface IncomeSource {
-    name: IncomeSourceName;
-    dynamicControl: IncomeSourceDynamicControl;
-}
-
-export type IncomeSourceDynamicControl = IncomeSourceSalary | IncomeSourceHourly | IncomeSourceBase;
-
-export interface IncomeSourceBase {
-    total: number;
-    debtToIncomeTotal: number;
-}
-// Salary
-export interface IncomeSalaryFormValues {
-    salary: string | number;
-    bonus?: string | number;
-}
-export interface IncomeSourceSalary extends IncomeSourceBase, IncomeSalaryFormValues {}
-// Hourly
-export interface IncomeHourlyFormValues {
-    hourlyRate: string | number;
-    hoursPerWeek: string | number;
-    weeksPerYear: string | number;
-}
-export interface IncomeSourceHourly extends IncomeSourceBase, IncomeHourlyFormValues {}
-// Rental
-export interface IncomeRentalFormValues {
-    address: string;
-    annualRevenue: string | number;
-}
-export interface IncomeSourceRental extends IncomeSourceBase, IncomeRentalFormValues {}
-// Pension
-export interface IncomePensionFormValues {
-    monthlyAmount: string | number;
-}
-export interface IncomeSourcePension extends IncomeSourceBase, IncomePensionFormValues {}
-// Social Security
-export interface IncomeSocialSecurityFormValues {
-    monthlyAmount: string | number;
-}
-export interface IncomeSourceSocialSecurity
-    extends IncomeSourceBase,
-        IncomeSocialSecurityFormValues {}
-// Child Support
-export interface IncomeChildSupportFormValues {
-    monthlyAmount: string | number;
-}
-export interface IncomeSourceChildSupport extends IncomeSourceBase, IncomeChildSupportFormValues {}
-// Alimony
-export interface IncomeAlimonyFormValues {
-    monthlyAmount: string | number;
-}
-export interface IncomeSourceAlimony extends IncomeSourceBase, IncomeAlimonyFormValues {}
-// Other
-export interface IncomeOtherFormValues {
-    description: string;
-    annualAmount: string | number;
-}
-export interface IncomeSourceOther extends IncomeSourceBase, IncomeOtherFormValues {}

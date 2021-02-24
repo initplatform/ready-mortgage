@@ -38,7 +38,7 @@ export class IncomeOtherComponent implements AfterViewInit, OnDestroy, ControlVa
     onChange!: (incomeSourceOther: IncomeOtherFormValues) => void;
     total = 0;
     incomeOtherForm = this.fb.group({
-        description: [undefined, [Validators.required]],
+        description: [undefined, []],
         annualAmount: [undefined, [Validators.required, numberValidator()]],
     });
 
