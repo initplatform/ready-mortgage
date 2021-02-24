@@ -73,5 +73,12 @@ export const assistantReducer = createImmerReducer(
         }
         state.assistant.buyer.incomeSources = incomeSources;
         return state;
+    }),
+    on(assistantActions.setDebtSources, (state, { debtSources }) => {
+        if (!state.assistant) {
+            throw new Error('ASSISTANT_NOT_FOUND');
+        }
+        state.assistant.buyer.debtSources = debtSources;
+        return state;
     })
 );

@@ -25,7 +25,7 @@ export const debtSourceNames = [
 ];
 
 export interface DebtSourceForm {
-    incomeSources: DebtSource[];
+    debtSources: DebtSource[];
 }
 
 export interface DebtSource {

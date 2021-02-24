@@ -1,5 +1,6 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CopyToClipboard, CopyToClipboardOptions } from '@common/models';
 import AOS, { Aos } from 'aos';
 import copyToClipboard from 'copy-to-clipboard';
@@ -16,7 +17,7 @@ export class UtilityService {
     _AOS: Aos;
     _lity: Lity;
 
-    constructor(private http: HttpClient) {
+    constructor(@Inject(DOCUMENT) private _document: Document, private http: HttpClient) {
         this._window = window;
         this.parse = JSON.parse;
         this.stringify = JSON.stringify;
@@ -26,6 +27,9 @@ export class UtilityService {
         this._lity = lity;
     }
 
+    get document(): Document {
+        return this._document;
+    }
     get window(): Window {
         return this._window;
     }

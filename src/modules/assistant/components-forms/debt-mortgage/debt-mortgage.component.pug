@@ -1,0 +1,32 @@
+form([formGroup]='debtMortgageForm')
+    sbpro-card-collapsable(headerText='Mortgage: {{total | currency: "USD" : "symbol" : "1.0-0"}}')
+        .card-body
+            .row
+                .col-md-4
+                    label.mb-1(
+                        [attr.for]='"inputDebtSourceMonthlyPayment" + index'
+                        ) Monthly Payment
+                    .input-group.input-group-joined(
+                        [class.is-valid]='monthlyPaymentControlValid',
+                        [class.is-invalid]='monthlyPaymentControlInvalid'
+                    )
+                        .input-group-prepend
+                            span.input-group-text $
+                        input.form-control.py-2(
+                            [attr.id]='"inputDebtSourceMonthlyPayment" + index',
+                            [attr.data-cy]='"inputDebtSourceMonthlyPayment" + index',
+                            type='text',
+                            placeholder='monthlyPayment',
+                            aria-describedby='monthlyPaymentHelp',
+                            formControlName='monthlyPayment'
+                        )
+                    .invalid-feedback(*ngIf='monthlyPaymentControl.hasError("required")')
+                        | Amount is required.
+                    .invalid-feedback(*ngIf='monthlyPaymentControl.hasError("NaN")')
+                        | Amount not recognized as a number.
+        .card-footer.d-flex
+            p.mr-auto TODO: DESCRIPTION
+            .d-flex.align-items-end.flex-column
+                i.bi.bi-trash.mt-auto.pointer(
+                    (click)='_remove()'
+                )

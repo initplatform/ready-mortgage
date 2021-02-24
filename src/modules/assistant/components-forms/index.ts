@@ -6,8 +6,19 @@ import { IncomeSocialSecurityComponent } from './income-social-security/income-s
 import { IncomeChildSupportComponent } from './income-child-support/income-child-support.component';
 import { IncomeAlimonyComponent } from './income-alimony/income-alimony.component';
 import { IncomeOtherComponent } from './income-other/income-other.component';
+import { DebtMortgageComponent } from './debt-mortgage/debt-mortgage.component';
+import { DebtRentComponent } from './debt-rent/debt-rent.component';
+import { DebtAutomobileComponent } from './debt-automobile/debt-automobile.component';
+import { DebtStudentLoanComponent } from './debt-student-loan/debt-student-loan.component';
+import { DebtCreditCardsComponent } from './debt-credit-cards/debt-credit-cards.component';
+import { DebtTimeShareComponent } from './debt-time-share/debt-time-share.component';
+import { DebtPersonalLoanComponent } from './debt-personal-loan/debt-personal-loan.component';
+import { DebtChildSipportComponent } from './debt-child-sipport/debt-child-sipport.component';
+import { DebtChildSupportComponent } from './debt-child-support/debt-child-support.component';
+import { DebtAlimonyComponent } from './debt-alimony/debt-alimony.component';
+import { DebtOtherComponent } from './debt-other/debt-other.component';
 
-export const componentsForms = [IncomeSalaryComponent, IncomeHourlyComponent, IncomeRentalComponent, IncomePensionComponent, IncomeSocialSecurityComponent, IncomeChildSupportComponent, IncomeAlimonyComponent, IncomeOtherComponent];
+export const componentsForms = [IncomeSalaryComponent, IncomeHourlyComponent, IncomeRentalComponent, IncomePensionComponent, IncomeSocialSecurityComponent, IncomeChildSupportComponent, IncomeAlimonyComponent, IncomeOtherComponent, DebtMortgageComponent, DebtRentComponent, DebtAutomobileComponent, DebtStudentLoanComponent, DebtCreditCardsComponent, DebtTimeShareComponent, DebtPersonalLoanComponent, DebtChildSipportComponent, DebtChildSupportComponent, DebtAlimonyComponent, DebtOtherComponent];
 
 export * from './income-salary/income-salary.component';
 export * from './income-hourly/income-hourly.component';
@@ -17,3 +28,14 @@ export * from './income-social-security/income-social-security.component';
 export * from './income-child-support/income-child-support.component';
 export * from './income-alimony/income-alimony.component';
 export * from './income-other/income-other.component';
+export * from './debt-mortgage/debt-mortgage.component';
+export * from './debt-rent/debt-rent.component';
+export * from './debt-automobile/debt-automobile.component';
+export * from './debt-student-loan/debt-student-loan.component';
+export * from './debt-credit-cards/debt-credit-cards.component';
+export * from './debt-time-share/debt-time-share.component';
+export * from './debt-personal-loan/debt-personal-loan.component';
+export * from './debt-child-sipport/debt-child-sipport.component';
+export * from './debt-child-support/debt-child-support.component';
+export * from './debt-alimony/debt-alimony.component';
+export * from './debt-other/debt-other.component';

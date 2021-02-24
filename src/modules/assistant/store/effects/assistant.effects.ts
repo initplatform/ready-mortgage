@@ -42,7 +42,8 @@ export class AssistantEffects {
                     assistantActions.setEstimatedPurchasePrice,
                     assistantActions.setDownPayment,
                     assistantActions.setEstimatedCreditScore,
-                    assistantActions.setIncomeSources
+                    assistantActions.setIncomeSources,
+                    assistantActions.setDebtSources
                 ),
                 concatMap((action) =>
                     of(action).pipe(

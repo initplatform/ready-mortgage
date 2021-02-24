@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { UtilityService } from '@common/services';
 import {
     Assistant,
     IncomeSource,
@@ -42,7 +43,8 @@ export class IncomeComponent implements OnInit, OnDestroy {
     constructor(
         private store: Store,
         private fb: FormBuilder,
-        private journeyService: JourneyService
+        private journeyService: JourneyService,
+        private utilityService: UtilityService
     ) {}
 
     ngOnInit() {
@@ -98,5 +100,15 @@ export class IncomeComponent implements OnInit, OnDestroy {
 
     continue() {
         this.journeyService.goToNextStep(this.assistant);
+    }
+    collapseAll() {
+        const cardHeaders = this.utilityService.document.querySelectorAll(
+            '#dynamicForm a.card-header'
+        );
+        cardHeaders.forEach((header) => {
+            if (!(header as HTMLElement).classList.contains('collapsed')) {
+                (header as HTMLElement).click();
+            }
+        });
     }
 }

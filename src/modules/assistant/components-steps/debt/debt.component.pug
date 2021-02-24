@@ -5,7 +5,7 @@
     h2.text-primary Monthly Debt: {{totalDebt | currency: 'USD' : 'symbol' : '1.0-0' }}
 
 .row.justify-content-center.text-center.mb-3
-    h5 Click on an item below to add
+    h5 Click on any items that apply
 
 .row.justify-content-around.text-center.mb-4
 
@@ -14,7 +14,36 @@
     )
         button.btn.btn-outline-primary.mb-4.btn-block(
             type='button',
-            (click)='addIncomeSource(debtSourceName.name)'
+            (click)='addDebtSource(debtSourceName.name)'
         )
             i.bi.bi-plus-circle.d-none.d-sm-inline-block.mr-2
             .font-weight-700.d-inline-block {{debtSourceName.displayName}}
+
+rdm-navigator.mb-4(
+    (continue)='continue()'
+)
+
+.row.justify-content-center.text-center.mb-4
+    button.btn.btn-secondary.btn-sm(
+        (click)='collapseAll()'
+    ) Collapse All
+
+form#dynamicForm([formGroup]='debtForm')
+
+    ng-container(
+        formArrayName="debtSources"
+    )
+        .form-group(
+            *ngFor='let debtSource of debtSources.controls; index as i'
+        )
+            ng-container(
+                [formGroupName]="i"
+            )
+                ng-container([ngSwitch]='debtSource.value.name')
+
+                    ng-container(*ngSwitchCase="'MORTGAGE'")
+                        rdm-debt-mortgage(
+                            [formControl]='debtSource.controls.dynamicControl',
+                            [index]='i',
+                            (remove)='removeDebtSource($event)'
+                        )

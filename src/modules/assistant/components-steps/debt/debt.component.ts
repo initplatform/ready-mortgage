@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { UtilityService } from '@common/services';
 import {
     Assistant,
+    DebtSource,
+    DebtSourceDynamicControl,
+    DebtSourceForm,
+    DebtSourceName,
     debtSourceNames,
-    IncomeSource,
-    IncomeSourceDynamicControl,
-    IncomeSourceForm,
-    IncomeSourceName,
 } from '@modules/assistant/models';
 import { JourneyService } from '@modules/assistant/services';
 import { assistantActions, assistantSelectors } from '@modules/assistant/store';
@@ -27,14 +28,14 @@ export class DebtComponent implements OnInit, OnDestroy {
     assistant!: Assistant;
     totalDebt!: number;
     debtSourceNames = debtSourceNames;
-    incomeForm = this.fb.group({
-        incomeSources: new FormArray([]),
+    debtForm = this.fb.group({
+        debtSources: new FormArray([]),
     });
 
-    dispatch = debounce((incomeSources: IncomeSource[]) => {
+    dispatch = debounce((debtSources: DebtSource[]) => {
         this.store.dispatch(
-            assistantActions.setIncomeSources({
-                incomeSources,
+            assistantActions.setDebtSources({
+                debtSources,
                 nextStep: false,
             })
         );
@@ -42,7 +43,8 @@ export class DebtComponent implements OnInit, OnDestroy {
     constructor(
         private store: Store,
         private fb: FormBuilder,
-        private journeyService: JourneyService
+        private journeyService: JourneyService,
+        private utilityService: UtilityService
     ) {}
 
     ngOnInit() {
@@ -51,52 +53,62 @@ export class DebtComponent implements OnInit, OnDestroy {
             .pipe(take(1))
             .subscribe((assistant) => {
                 this.assistant = assistant;
-                if (this.assistant.buyer.incomeSources.length > 0) {
-                    this.assistant.buyer.incomeSources.reduceRight<null>((_, incomeSource) => {
-                        this.addIncomeSource(incomeSource.name, incomeSource.dynamicControl);
+                if (this.assistant.buyer.debtSources.length > 0) {
+                    this.assistant.buyer.debtSources.reduceRight<null>((_, debtSource) => {
+                        this.addDebtSource(debtSource.name, debtSource.dynamicControl);
                         return null;
                     }, null);
-                    this._setTotalIncome(this.assistant.buyer.incomeSources);
+                    this._setTotalDebt(this.assistant.buyer.debtSources);
                 }
             });
 
         this.subscription.add(
-            this.incomeForm.valueChanges.subscribe((value: IncomeSourceForm) => {
+            this.debtForm.valueChanges.subscribe((value: DebtSourceForm) => {
                 // Calculate total total
-                this._setTotalIncome(value.incomeSources);
-                this.dispatch(value.incomeSources);
+                this._setTotalDebt(value.debtSources);
+                this.dispatch(value.debtSources);
             })
         );
     }
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-    _setTotalIncome(incomeSources: IncomeSource[]) {
-        this.totalDebt = incomeSources.reduce<number>((previous, current) => {
+    _setTotalDebt(debtSources: DebtSource[]) {
+        this.totalDebt = debtSources.reduce<number>((previous, current) => {
             return previous + current.dynamicControl.total;
         }, 0);
     }
-    removeIncomeSource(index: number) {
-        this.incomeSources.removeAt(index);
+    removeDebtSource(index: number) {
+        this.debtSources.removeAt(index);
     }
-    addIncomeSource(incomeSource: IncomeSourceName, dynamicControl?: IncomeSourceDynamicControl) {
+    addDebtSource(debtSource: DebtSourceName, dynamicControl?: DebtSourceDynamicControl) {
         if (!dynamicControl) {
-            dynamicControl = { total: 0, debtToIncomeTotal: 0 };
+            dynamicControl = { total: 0, incomeToDebtTotal: 0 };
         }
-        this.incomeSources.insert(
+        this.debtSources.insert(
             0,
             this.fb.group({
-                name: [incomeSource, Validators.required],
+                name: [debtSource, Validators.required],
                 dynamicControl: [dynamicControl, []],
             })
         );
     }
 
-    get incomeSources() {
-        return this.incomeForm.get('incomeSources') as FormArray;
+    get debtSources() {
+        return this.debtForm.get('debtSources') as FormArray;
     }
 
     continue() {
         this.journeyService.goToNextStep(this.assistant);
+    }
+    collapseAll() {
+        const cardHeaders = this.utilityService.document.querySelectorAll(
+            '#dynamicForm a.card-header'
+        );
+        cardHeaders.forEach((header) => {
+            if (!(header as HTMLElement).classList.contains('collapsed')) {
+                (header as HTMLElement).click();
+            }
+        });
     }
 }

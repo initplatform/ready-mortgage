@@ -3,6 +3,7 @@ import {
     AssistantCreditEstimate,
     AssistantGoal,
     AssistantSearchStage,
+    DebtSource,
     IncomeSource,
     JourneyName,
 } from '@modules/assistant/models';
@@ -46,6 +47,10 @@ export const setIncomeSources = createAction(
     '[Assistant] Set Income Sources',
     props<{ incomeSources: IncomeSource[]; nextStep: boolean }>()
 );
+export const setDebtSources = createAction(
+    '[Assistant] Set Debt Sources',
+    props<{ debtSources: DebtSource[]; nextStep: boolean }>()
+);
 
 const all = union({
     loadAssistant,
@@ -58,5 +63,6 @@ const all = union({
     setDownPayment,
     setEstimatedCreditScore,
     setIncomeSources,
+    setDebtSources,
 });
 export type AllActions = typeof all;
