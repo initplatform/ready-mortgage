@@ -68,6 +68,10 @@ export const journeys: Journey[] = [
                 path: '/assistant/debt',
                 namedStep: 'Debt',
             },
+            {
+                path: '/assistant/summary',
+                namedStep: 'Summary',
+            },
         ],
     },
 ];

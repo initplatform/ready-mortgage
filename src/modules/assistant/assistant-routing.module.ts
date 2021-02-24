@@ -85,6 +85,13 @@ export const ROUTES: Routes = [
                 component: assistantComponentsSteps.DebtComponent,
             },
             {
+                path: 'summary',
+                data: {
+                    title: 'Summary - Ready Mortgage',
+                } as SBRouteData,
+                component: assistantComponentsSteps.SummaryComponent,
+            },
+            {
                 path: '**',
                 pathMatch: 'full',
                 redirectTo: '/error/404',

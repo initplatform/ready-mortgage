@@ -40,6 +40,35 @@ export class UtilityService {
         return this._AOS;
     }
 
+    // Only works with Bootstrap 5
+    // get primary(): string {
+    //     return getComputedStyle(this._document.documentElement)
+    //         .getPropertyValue('--bs-primary')
+    //         .trim();
+    // }
+
+    // get primaryRGB(): string {
+    //     const rgb = this._hexToRgb(this.primary);
+    //     if (!rgb) {
+    //         throw new Error(`UNABLE_TO_CONVERT_STRING_TO_RGB: ${rgb}`);
+    //     }
+    //     return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+    // }
+
+    // get secondary(): string {
+    //     return getComputedStyle(this._document.documentElement)
+    //         .getPropertyValue('--bs-secondary')
+    //         .trim();
+    // }
+
+    // get secondaryRGB(): string {
+    //     const rgb = this._hexToRgb(this.secondary);
+    //     if (!rgb) {
+    //         throw new Error(`UNABLE_TO_CONVERT_STRING_TO_RGB: ${rgb}`);
+    //     }
+    //     return `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+    // }
+
     getStoredObject<T>(objectName: string): T | undefined {
         const objectString = this.localStorage.getItem(objectName);
         if (!objectString) {
@@ -54,5 +83,16 @@ export class UtilityService {
 
     copyToClipboard(text: string, options?: CopyToClipboardOptions) {
         this._copyToClipboard(text, options);
+    }
+
+    _hexToRgb(hex: string) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result
+            ? {
+                  r: parseInt(result[1], 16),
+                  g: parseInt(result[2], 16),
+                  b: parseInt(result[3], 16),
+              }
+            : null;
     }
 }
