@@ -9,7 +9,8 @@ rdm-range(
     step=20000,
     [currency]='true',
     spread=20000,
-    [maxValueIsCeiling]='false'
+    [maxValueIsCeiling]='false',
+    (liveValue)='valueUpdated($event)'
 )
 
 rdm-navigator(

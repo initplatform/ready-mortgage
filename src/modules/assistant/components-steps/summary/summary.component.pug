@@ -1,4 +1,41 @@
-p summary
+.row
+    .col-md-6
+        h2.mb-3 Debt to Income Ratio: {{debtToIncomeRatio | percent:'1.0-2'}}
+        p.mb-4 TODO: Explain this
+        .card.mb-4
+            .card-body
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Home Price
+                    a(
+                        routerLink='/assistant/known-home-price'
+                    ) {{assistant.property.estimatedPurchasePrice | currency: 'USD' : 'symbol' : '1.0-0'}}
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Down Payment
+                    a(
+                        routerLink='/assistant/down-payment'
+                    ) {{assistant.buyer.downPayment | currency: 'USD' : 'symbol' : '1.0-0'}}
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Credit Score
+                    a(
+                        routerLink='/assistant/credit-score'
+                    ) {{assistant.buyer.estimatedCreditScore}}
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Monthly Income
+                    a(
+                        routerLink='/assistant/income'
+                    ) {{totalMonthlyIncome | currency: 'USD' : 'symbol' : '1.0-0'}}
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Monthly Income (Adjusted)
+                    a(
+                        routerLink='/assistant/income'
+                    ) {{adjustedMonthlyIncome | currency: 'USD' : 'symbol' : '1.0-0'}}
+                .d-flex.align-items-center.justify-content-between.mb-4
+                    h5 Debt
+                    a(
+                        routerLink='/assistant/debt'
+                    ) {{totalMonthlyDebt | currency: 'USD' : 'symbol' : '1.0-0'}}
 
-#donutChartContainer
-    canvas(#donutChart, width='400px', height='400px')
+        
+    .col-md-6
+        #donutChartContainer.m-2
+            canvas(#donutChart, width='400px', height='400px')

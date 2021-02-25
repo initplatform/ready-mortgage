@@ -29,6 +29,14 @@ export class DownPaymentComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+    valueUpdated(value: number) {
+        this.store.dispatch(
+            assistantActions.setDownPayment({
+                downPayment: value,
+                nextStep: false,
+            })
+        );
+    }
     continue() {
         this.store.dispatch(
             assistantActions.setDownPayment({

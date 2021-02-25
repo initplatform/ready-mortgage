@@ -29,6 +29,14 @@ export class KnownHomePriceComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+    valueUpdated(value: number) {
+        this.store.dispatch(
+            assistantActions.setEstimatedPurchasePrice({
+                estimatedPurchasePrice: value,
+                nextStep: false,
+            })
+        );
+    }
     continue() {
         this.store.dispatch(
             assistantActions.setEstimatedPurchasePrice({

@@ -4,5 +4,6 @@
         [ngClass]='{active: step.path === currentPath}'
     )
         a.step-item-link(
-            [ngClass]='{active: step.path === currentPath}'
+            [ngClass]='{active: step.path === currentPath}',
+            [routerLink]='step.path'
         ) {{step.name}}

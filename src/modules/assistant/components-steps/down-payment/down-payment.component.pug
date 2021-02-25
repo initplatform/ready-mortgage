@@ -10,7 +10,8 @@ rdm-range(
     step=1000,
     [currency]='true',
     [maxValueIsCeiling]='false',
-    [showPercent]='true'
+    [showPercent]='true',
+    (liveValue)='valueUpdated($event)'
 )
 
 rdm-navigator(
